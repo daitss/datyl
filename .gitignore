@@ -1,0 +1,13 @@
+*~
+*-
+.#*
+\#*
+irb*.rb
+.emacs*
+.yardoc
+REVISION
+TAGS
+TO DO
+spec/reports
+.bundle
+bundle

@@ -1,0 +1,15 @@
+database:
+  daitss_connection_string: postgres://daitss:topsecret@localhost/daitss_db
+  storemaster_connection_string: postgres://storemaster:topsecret@localhost/daitss_db
+  silo_connection_string: postgres://silo:topsecret@localhost/store_db
+
+silos:
+  temp_dir_env: /var/daitss/
+  silo_connection_string: postgres://silo:mysecret@localhost/test_store_db
+
+daitss:
+
+fixity:
+  a: 1
+  b: 2
+
