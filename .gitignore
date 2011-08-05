@@ -11,3 +11,4 @@ TO DO
 spec/reports
 .bundle
 bundle
+coverage

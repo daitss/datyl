@@ -10,6 +10,8 @@ silos:
 daitss:
 
 fixity:
-  a: 1
-  b: 2
+  expiration_days: 45
+  stale_days: 60
 
+funky-section:
+  funky-key:  funky value

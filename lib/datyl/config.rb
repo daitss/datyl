@@ -42,7 +42,7 @@ module Datyl
       raise "Configuration setup wasn't supplied a valid YAML file path - instead it got a #{yaml_path.class}" unless yaml_path.class == String
       raise "Configuration setup can't find the specified YAML file #{yaml_path}" unless File.exists? yaml_path
       raise "Configuration setup can't read the specified YAML file #{yaml_path}" unless File.readable? yaml_path
-
+      raise "Configuration setup must be supplied with one or more sections for the yaml file #{yaml_path}" if sections.empty?
       begin
         @yaml = YAML.load_file yaml_path
       rescue => e
@@ -54,12 +54,21 @@ module Datyl
       end
 
       @hash = Hash.new
-
+      
+      section_keys = @yaml.keys   # we may have an empy section - that should get it's own address
+      
       sections.each do |sect|
-        data = @yaml[sect.to_s]
+        sect = sect.to_s
+        
+        data = @yaml[sect]
+
+        next if data.nil? and @yaml.keys.include? sect     # catch empty section
+        
         if data.nil?
           raise "Configuration setup could not find a section named #{sect} in the specified YAML file #{yaml_path}"
         end
+
+        data = @yaml[sect]
         if data.class != Hash
           raise "Configuration setup expected that the section named #{sect} from the specified YAML file #{yaml_path} would be a hash, but instead it's a #{data.class}"
         end
@@ -69,14 +78,16 @@ module Datyl
     
     def method_missing method, *args
       if not args.empty?
-        raise "${method} takes no arguments, but got #{args.length}"
+        raise "method #{method} takes no arguments, but got #{args.length}"
       end
       return @hash[method.to_s]
     end
 
-    def []= key, value
-      @hash[key.to_s] = value
-    end
+    # No real reason to have this
+    #
+    # def []= key, value
+    #  @hash[key.to_s] = value
+    # end
 
     def [] key
       return @hash[key.to_s]
