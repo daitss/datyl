@@ -106,28 +106,10 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#%5B%5D%3D-instance_method" title="#[]= (instance method)">- (Object) <strong>[]=</strong>(key, value) </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'><p>
+No real reason to have this.
+</p>
+</div></span>
   
 </li>
 
@@ -303,7 +285,16 @@ A new instance of Config
 65
 66
 67
-68</pre>
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File '/Users/fischer/WorkProjects/daitss2/datyl/lib/datyl/config.rb', line 37</span>
@@ -316,7 +307,7 @@ A new instance of Config
   <span class='raise identifier id'>raise</span> <span class='dstring node'>&quot;Configuration setup wasn't supplied a valid YAML file path - instead it got a #{yaml_path.class}&quot;</span> <span class='unless unless_mod kw'>unless</span> <span class='yaml_path identifier id'>yaml_path</span><span class='dot token'>.</span><span class='class identifier id'>class</span> <span class='eq op'>==</span> <span class='String constant id'>String</span>
   <span class='raise identifier id'>raise</span> <span class='dstring node'>&quot;Configuration setup can't find the specified YAML file #{yaml_path}&quot;</span> <span class='unless unless_mod kw'>unless</span> <span class='File constant id'>File</span><span class='dot token'>.</span><span class='exists? fid id'>exists?</span> <span class='yaml_path identifier id'>yaml_path</span>
   <span class='raise identifier id'>raise</span> <span class='dstring node'>&quot;Configuration setup can't read the specified YAML file #{yaml_path}&quot;</span> <span class='unless unless_mod kw'>unless</span> <span class='File constant id'>File</span><span class='dot token'>.</span><span class='readable? fid id'>readable?</span> <span class='yaml_path identifier id'>yaml_path</span>
-
+  <span class='raise identifier id'>raise</span> <span class='dstring node'>&quot;Configuration setup must be supplied with one or more sections for the yaml file #{yaml_path}&quot;</span> <span class='if if_mod kw'>if</span> <span class='sections identifier id'>sections</span><span class='dot token'>.</span><span class='empty? fid id'>empty?</span>
   <span class='begin begin kw'>begin</span>
     <span class='@yaml ivar id'>@yaml</span> <span class='assign token'>=</span> <span class='YAML constant id'>YAML</span><span class='dot token'>.</span><span class='load_file identifier id'>load_file</span> <span class='yaml_path identifier id'>yaml_path</span>
   <span class='rescue rescue kw'>rescue</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='e identifier id'>e</span>
@@ -328,12 +319,21 @@ A new instance of Config
   <span class='end end kw'>end</span>
 
   <span class='@hash ivar id'>@hash</span> <span class='assign token'>=</span> <span class='Hash constant id'>Hash</span><span class='dot token'>.</span><span class='new identifier id'>new</span>
-
+  
+  <span class='section_keys identifier id'>section_keys</span> <span class='assign token'>=</span> <span class='@yaml ivar id'>@yaml</span><span class='dot token'>.</span><span class='keys identifier id'>keys</span>   <span class='comment val'># we may have an empy section - that should get it's own address</span>
+  
   <span class='sections identifier id'>sections</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='sect identifier id'>sect</span><span class='bitor op'>|</span>
-    <span class='data identifier id'>data</span> <span class='assign token'>=</span> <span class='@yaml ivar id'>@yaml</span><span class='lbrack token'>[</span><span class='sect identifier id'>sect</span><span class='dot token'>.</span><span class='to_s identifier id'>to_s</span><span class='rbrack token'>]</span>
+    <span class='sect identifier id'>sect</span> <span class='assign token'>=</span> <span class='sect identifier id'>sect</span><span class='dot token'>.</span><span class='to_s identifier id'>to_s</span>
+    
+    <span class='data identifier id'>data</span> <span class='assign token'>=</span> <span class='@yaml ivar id'>@yaml</span><span class='lbrack token'>[</span><span class='sect identifier id'>sect</span><span class='rbrack token'>]</span>
+
+    <span class='next next kw'>next</span> <span class='if if_mod kw'>if</span> <span class='data identifier id'>data</span><span class='dot token'>.</span><span class='nil? fid id'>nil?</span> <span class='and and kw'>and</span> <span class='@yaml ivar id'>@yaml</span><span class='dot token'>.</span><span class='keys identifier id'>keys</span><span class='dot token'>.</span><span class='include? fid id'>include?</span> <span class='sect identifier id'>sect</span>     <span class='comment val'># catch empty section</span>
+    
     <span class='if if kw'>if</span> <span class='data identifier id'>data</span><span class='dot token'>.</span><span class='nil? fid id'>nil?</span>
       <span class='raise identifier id'>raise</span> <span class='dstring node'>&quot;Configuration setup could not find a section named #{sect} in the specified YAML file #{yaml_path}&quot;</span>
     <span class='end end kw'>end</span>
+
+    <span class='data identifier id'>data</span> <span class='assign token'>=</span> <span class='@yaml ivar id'>@yaml</span><span class='lbrack token'>[</span><span class='sect identifier id'>sect</span><span class='rbrack token'>]</span>
     <span class='if if kw'>if</span> <span class='data identifier id'>data</span><span class='dot token'>.</span><span class='class identifier id'>class</span> <span class='neq op'>!=</span> <span class='Hash constant id'>Hash</span>
       <span class='raise identifier id'>raise</span> <span class='dstring node'>&quot;Configuration setup expected that the section named #{sect} from the specified YAML file #{yaml_path} would be a hash, but instead it's a #{data.class}&quot;</span>
     <span class='end end kw'>end</span>
@@ -367,19 +367,19 @@ A new instance of Config
       <pre class="lines">
 
 
-70
-71
-72
-73
-74
-75</pre>
+79
+80
+81
+82
+83
+84</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File '/Users/fischer/WorkProjects/daitss2/datyl/lib/datyl/config.rb', line 70</span>
+      <pre class="code"><span class="info file"># File '/Users/fischer/WorkProjects/daitss2/datyl/lib/datyl/config.rb', line 79</span>
 
 <span class='def def kw'>def</span> <span class='method_missing identifier id'>method_missing</span> <span class='method identifier id'>method</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='args identifier id'>args</span>
   <span class='if if kw'>if</span> <span class='not not kw'>not</span> <span class='args identifier id'>args</span><span class='dot token'>.</span><span class='empty? fid id'>empty?</span>
-    <span class='raise identifier id'>raise</span> <span class='dstring node'>&quot;${method} takes no arguments, but got #{args.length}&quot;</span>
+    <span class='raise identifier id'>raise</span> <span class='dstring node'>&quot;method #{method} takes no arguments, but got #{args.length}&quot;</span>
   <span class='end end kw'>end</span>
   <span class='return return kw'>return</span> <span class='@hash ivar id'>@hash</span><span class='lbrack token'>[</span><span class='method identifier id'>method</span><span class='dot token'>.</span><span class='to_s identifier id'>to_s</span><span class='rbrack token'>]</span>
 <span class='end end kw'>end</span>
@@ -403,50 +403,41 @@ A new instance of Config
   
 
   
-</p><table class="source_code">
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+No real reason to have this
+</p>
+<p>
+def []= key, value
+</p>
+<pre class="code">
+ <span class='@hash ivar id'>@hash</span><span class='lbrack token'>[</span><span class='key identifier id'>key</span><span class='dot token'>.</span><span class='to_s identifier id'>to_s</span><span class='rbrack token'>]</span> <span class='assign token'>=</span> <span class='value identifier id'>value</span>
+</pre>
+<p>
+end
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-81
-82
-83</pre>
+92
+93
+94</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File '/Users/fischer/WorkProjects/daitss2/datyl/lib/datyl/config.rb', line 81</span>
+      <pre class="code"><span class="info file"># File '/Users/fischer/WorkProjects/daitss2/datyl/lib/datyl/config.rb', line 92</span>
 
 <span class='def def kw'>def</span> <span class='aref op'>[]</span> <span class='key identifier id'>key</span>
   <span class='return return kw'>return</span> <span class='@hash ivar id'>@hash</span><span class='lbrack token'>[</span><span class='key identifier id'>key</span><span class='dot token'>.</span><span class='to_s identifier id'>to_s</span><span class='rbrack token'>]</span>
-<span class='end end kw'>end</span>
-</pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <p class="signature " id="[]=-instance_method">
-  
-    - (<tt>Object</tt>) <strong>[]=</strong>(key, value) 
-  
-
-  
-</p><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-77
-78
-79</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File '/Users/fischer/WorkProjects/daitss2/datyl/lib/datyl/config.rb', line 77</span>
-
-<span class='def def kw'>def</span> <span class='aset op'>[]=</span> <span class='key identifier id'>key</span><span class='comma token'>,</span> <span class='value identifier id'>value</span>
-  <span class='@hash ivar id'>@hash</span><span class='lbrack token'>[</span><span class='key identifier id'>key</span><span class='dot token'>.</span><span class='to_s identifier id'>to_s</span><span class='rbrack token'>]</span> <span class='assign token'>=</span> <span class='value identifier id'>value</span>
 <span class='end end kw'>end</span>
 </pre>
     </td>
@@ -467,18 +458,18 @@ A new instance of Config
       <pre class="lines">
 
 
-93
-94
-95
-96
-97</pre>
+104
+105
+106
+107
+108</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File '/Users/fischer/WorkProjects/daitss2/datyl/lib/datyl/config.rb', line 93</span>
+      <pre class="code"><span class="info file"># File '/Users/fischer/WorkProjects/daitss2/datyl/lib/datyl/config.rb', line 104</span>
 
 <span class='def def kw'>def</span> <span class='each identifier id'>each</span> 
   <span class='@hash ivar id'>@hash</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='k identifier id'>k</span><span class='comma token'>,</span> <span class='v identifier id'>v</span><span class='bitor op'>|</span>
-    <span class='yield yield kw'>yield</span> <span class='k identifier id'>k</span><span class='dot token'>.</span><span class='to_sym identifier id'>to_sym</span><span class='comma token'>,</span> <span class='v identifier id'>v</span>
+    <span class='yield yield kw'>yield</span> <span class='k identifier id'>k</span><span class='comma token'>,</span> <span class='v identifier id'>v</span>
   <span class='end end kw'>end</span>
 <span class='end end kw'>end</span>
 </pre>
@@ -500,15 +491,15 @@ A new instance of Config
       <pre class="lines">
 
 
-85
-86
-87</pre>
+96
+97
+98</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File '/Users/fischer/WorkProjects/daitss2/datyl/lib/datyl/config.rb', line 85</span>
+      <pre class="code"><span class="info file"># File '/Users/fischer/WorkProjects/daitss2/datyl/lib/datyl/config.rb', line 96</span>
 
 <span class='def def kw'>def</span> <span class='keys identifier id'>keys</span>
-  <span class='@hash ivar id'>@hash</span><span class='dot token'>.</span><span class='keys identifier id'>keys</span><span class='dot token'>.</span><span class='map identifier id'>map</span> <span class='lbrace token'>{</span> <span class='bitor op'>|</span><span class='k identifier id'>k</span><span class='bitor op'>|</span> <span class='k identifier id'>k</span><span class='dot token'>.</span><span class='to_sym identifier id'>to_sym</span> <span class='rbrace token'>}</span>
+  <span class='@hash ivar id'>@hash</span><span class='dot token'>.</span><span class='keys identifier id'>keys</span>
 <span class='end end kw'>end</span>
 </pre>
     </td>
@@ -529,12 +520,12 @@ A new instance of Config
       <pre class="lines">
 
 
-89
-90
-91</pre>
+100
+101
+102</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File '/Users/fischer/WorkProjects/daitss2/datyl/lib/datyl/config.rb', line 89</span>
+      <pre class="code"><span class="info file"># File '/Users/fischer/WorkProjects/daitss2/datyl/lib/datyl/config.rb', line 100</span>
 
 <span class='def def kw'>def</span> <span class='values identifier id'>values</span>
   <span class='@hash ivar id'>@hash</span><span class='dot token'>.</span><span class='values identifier id'>values</span>
@@ -550,7 +541,7 @@ A new instance of Config
 </div>
     
     <div id="footer">
-  Generated on Fri Aug  5 14:55:24 2011 by 
+  Generated on Fri Aug  5 19:11:50 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.6.0 (ruby-1.8.7).
 </div>
