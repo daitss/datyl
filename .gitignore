@@ -7,7 +7,7 @@ irb*.rb
 .yardoc
 REVISION
 TAGS
-TO DO
+TODO
 spec/reports
 .bundle
 bundle
