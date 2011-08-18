@@ -1,6 +1,7 @@
 version = File.read(File.expand_path("../VERSION", __FILE__)).strip
 
 Gem::Specification.new do |s|
+
   s.platform = Gem::Platform::RUBY
   s.name = 'datyl'
   s.version = version
@@ -9,10 +10,12 @@ Gem::Specification.new do |s|
 
   s.required_ruby_version = '>= 1.8.7'
 
-  s.author = 'Randy Fischer and Manny Rodriguez'
-  s.email = 'rf@ufl.edu'
+  s.authors = [ 'Randy Fischer', 'Manny Rodriguez' ]
+  s.email   = [ 'rf@ufl.edu', 'avatar38@ufl.edu' ]
+
   s.homepage = 'http://fda.fcla.edu/'
 
   s.files = Dir['CHANGELOG', 'README', 'lib/**/*']
+
   s.require_path = 'lib'
 end

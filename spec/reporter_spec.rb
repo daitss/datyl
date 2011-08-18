@@ -13,25 +13,25 @@ def output reporter
 end
 
 
-describe Reporter do
+describe Datyl::Reporter do
     
   it "should create a report object with a simple title" do
 
-    report = Reporter.new "Main Title"
+    report = Datyl::Reporter.new "Main Title"
     text = output(report)
     text.should =~ /^Main Title$/n
     text.should =~ /^::::::::::$/n
   end
 
   it "should create a report object with a title and subtitle" do
-    report = Reporter.new "Main Title", "Subtitle"
+    report = Datyl::Reporter.new "Main Title", "Subtitle"
     text = output(report)
     text.should =~ /^Main Title: Subtitle$/n
     text.should =~ /^::::::::::::::::::::$/n
   end
 
   it "should create a report object with lines of text and a trailing line" do
-    report = Reporter.new "Main Title", "Subtitle"
+    report = Datyl::Reporter.new "Main Title", "Subtitle"
     report.err 'An Error'
     report.warn 'A Warning'
     report.info 'An Info'
@@ -48,19 +48,19 @@ describe Reporter do
   end
 
   it "should not be interesting if it is empty" do
-    report = Reporter.new "Main Title", "Subtitle"
+    report = Datyl::Reporter.new "Main Title", "Subtitle"
     report.interesting?.should == false
   end    
 
   it "should be interesting if it has content" do
-    report = Reporter.new 'Main Title', 'Subtitle'
+    report = Datyl::Reporter.new 'Main Title', 'Subtitle'
     report.info 'booga booga'
     report.interesting?.should == true
   end    
 
   it "should insert blank lines when we 'info' without an argument" do
-    Reporter.max_lines_to_write = 10
-    report = Reporter.new 'Main Title', 'Subtitle'
+    Datyl::Reporter.max_lines_to_write = 10
+    report = Datyl::Reporter.new 'Main Title', 'Subtitle'
 
     report.info 'this'
     report.info 
@@ -73,8 +73,8 @@ describe Reporter do
   end
 
   it "should clip out extra lines" do
-    Reporter.max_lines_to_write = 10
-    report = Reporter.new 'Main Title', 'Subtitle'
+    Datyl::Reporter.max_lines_to_write = 10
+    report = Datyl::Reporter.new 'Main Title', 'Subtitle'
 
     100.times do |num|
       report.info "Line #{num}"
