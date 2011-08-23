@@ -3,8 +3,8 @@
 require 'fileutils'
 require 'rake'
 require 'socket'
-require 'rake/rdoctask'
-require 'spec/rake/spectask'
+require 'rspec/core/rake_task'
+require 'socket'
 
 
 HOME    = File.expand_path(File.dirname(__FILE__))
@@ -19,13 +19,10 @@ def dev_host
   end
 end
 
-Spec::Rake::SpecTask.new do |task|
-  task.spec_opts = [ '--format', 'specdoc' ]
-  task.libs << 'lib'
-  task.libs << 'spec'
-  task.rcov = true if dev_host   # do coverage tests on my devlopment box
+RSpec::Core::RakeTask.new do |task|
+  task.rspec_opts = [ '--color', '--format', 'documentation' ] 
+  ## task.rcov = true if Socket.gethostname =~ /romeo-foxtrot/   # do coverage tests on my devlopment box
 end
-
 
 desc "Generate documentation from libraries with yard."
 task :docs do
