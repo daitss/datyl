@@ -161,7 +161,7 @@ module Datyl
 
     def Logger.err message, env = {}
       return unless (@@virtual_hostname and @@service_name)
-      Log4r::Logger[@@virtual_hostname].error prefix(env) + ' ' + message.chomp
+      Log4r::Logger[@@virtual_hostname].error (env.empty? '' : prefix(env) + ' ') + message.chomp
     end
 
     # Logger.warn MESSAGE, [ ENV ]
@@ -172,7 +172,7 @@ module Datyl
 
     def Logger.warn message, env = {}
       return unless (@@virtual_hostname and @@service_name)
-      Log4r::Logger[@@virtual_hostname].warn  prefix(env) + ' ' + message.chomp
+      Log4r::Logger[@@virtual_hostname].warn (env.empty? '' : prefix(env) + ' ') + message.chomp
     end
 
     # Logger.info MESSAGE, [ ENV ]
@@ -183,7 +183,7 @@ module Datyl
 
     def Logger.info message, env = {}
       return unless (@@virtual_hostname and @@service_name)
-      Log4r::Logger[@@virtual_hostname].info  prefix(env) + ' ' + message.chomp
+      Log4r::Logger[@@virtual_hostname].info  (env.empty? '' : prefix(env) + ' ') + message.chomp
     end
 
     # While we normally use the class methods to write our own log
