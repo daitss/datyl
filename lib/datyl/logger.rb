@@ -87,8 +87,8 @@ module Datyl
     # can be conveniently parsed.
 
 
-    def Logger.setup(service_name, virtual_hostname = Socket.gethostname)
-      @@virtual_hostname = virtual_hostname
+    def Logger.setup(service_name, virtual_hostname = nil)
+      @@virtual_hostname = virtual_hostname || Socket.gethostname
       @@service_name     = service_name
 
       Log4r::Logger.new @@virtual_hostname
@@ -237,7 +237,5 @@ module Datyl
               )
     end
 
-
   end # of class
-
 end # of module Datyl
