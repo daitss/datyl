@@ -106,7 +106,8 @@ module Datyl
 
     def Logger.filename= filepath
       return unless (@@virtual_hostname and @@service_name)
-      Log4r::Logger[@@virtual_hostname].add Log4r::FileOutputter.new(@@service_name, { :filename => filepath, :trunc => false })
+      formatter = Log4r::PatternFormatter.new(:pattern => "%d %l %m")
+      Log4r::Logger[@@virtual_hostname].add Log4r::FileOutputter.new(@@service_name, { :filename => filepath, :trunc => false, :formatter => formatter })
       filepath
     end
 
@@ -153,6 +154,14 @@ module Datyl
       facility
     end
 
+    def Logger.format_message message, env
+      suffix = apache_styling(env).strip
+      prefix = message.strip
+
+      return (prefix.empty? or suffix.empty?) ? prefix + suffix : prefix + ' ' + suffix
+    end
+
+
     # Logger.err MESSAGE, [ ENV ]
     #
     # Log an error message MESSAGE, a string; The hash
@@ -161,7 +170,7 @@ module Datyl
 
     def Logger.err message, env = {}
       return unless (@@virtual_hostname and @@service_name)
-      Log4r::Logger[@@virtual_hostname].error((env.empty? ? '' : prefix(env) + ' ') + message.chomp)
+      Log4r::Logger[@@virtual_hostname].error format_message(message, env)
     end
 
     # Logger.warn MESSAGE, [ ENV ]
@@ -172,7 +181,7 @@ module Datyl
 
     def Logger.warn message, env = {}
       return unless (@@virtual_hostname and @@service_name)
-      Log4r::Logger[@@virtual_hostname].warn((env.empty? ? '' : prefix(env) + ' ') + message.chomp)
+      Log4r::Logger[@@virtual_hostname].warn format_message(message, env)
     end
 
     # Logger.info MESSAGE, [ ENV ]
@@ -183,7 +192,7 @@ module Datyl
 
     def Logger.info message, env = {}
       return unless (@@virtual_hostname and @@service_name)
-      Log4r::Logger[@@virtual_hostname].info((env.empty? ? '' : prefix(env) + ' ') + message.chomp)
+      Log4r::Logger[@@virtual_hostname].info format_message(message, env)
     end
 
     # While we normally use the class methods to write our own log
@@ -208,8 +217,9 @@ module Datyl
 
     # log.write MESSAGE
     #
-    # Rack::CommonLogger can be told to use as a logger any object that has a write method on
-    # it. See the Logger#new method for an example of its use.
+    # Rack::CommonLogger can be told to use as a logger any object
+    # that has a write method on it. See the Logger#new method for an
+    # example of its use.
 
     def write message
       Log4r::Logger[@@virtual_hostname].send(@level, @tag ? "#{@tag} #{message.chomp}" : message.chomp)
@@ -217,23 +227,27 @@ module Datyl
 
     private
 
-    # prefix ENV
+    # apache_styling ENV
     #
-    # Create an apache-style "METHOD /uri"  string, if possible, from the environment ENV.
-    # ENV is expected to be @env from a rack application
+    # Create an apache-style "METHOD /uri" string, if possible, from
+    # the environment ENV.  ENV is expected to be @env from a rack
+    # application or similar.  Stolen from rack's commonlogger with
+    # minor corrections.
     #
-    # Note that the object method #write will not use this.
+    # Note that the logger object's #write method will not use this,
+    # precisely because we usually use the logger object with rack,
+    # which appends exactly this information.
 
-    def Logger.prefix env
+    def Logger.apache_styling env
       return '' if env['REQUEST_METHOD'].nil? or env['PATH_INFO'].nil?
 
-      sprintf('%s %s %s %s "%s%s"',
+      sprintf('%s - %s "%s %s%s %s"',
               env['HTTP_X_FORWARDED_FOR'] || env["REMOTE_ADDR"] || "-",
               env["REMOTE_USER"] || "-",
-              env["SERVER_PROTOCOL"],
               env["REQUEST_METHOD"],
               env["PATH_INFO"],
-              env["QUERY_STRING"].empty? ? "" : "?" + env["QUERY_STRING"]
+              env["QUERY_STRING"].empty? ? "" : "?" + env["QUERY_STRING"],
+              env["SERVER_PROTOCOL"] || env["HTTP_VERSION"]
               )
     end
 
