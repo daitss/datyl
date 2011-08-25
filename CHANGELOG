@@ -1,8 +1,16 @@
-0.0.1 - 2011-08-05
+0.1.2 - 2011-08-25
 
-Initial creation
+ * Reworked Rakefile to use new rspec
+
+ * Changed logging output format to be more consistent
+
+ * Added spec tests for file-based logs
+
+0.1.1 - 2011-08-05
+
+ * Moved Logger under Datyl namespace
 
 0.1.0 - 2011-08-18 
 
-Moved Logger, Config, and Reporter classes under Datyl namespace.
+ * Moved Config, and Reporter classes under Datyl namespace.
 
