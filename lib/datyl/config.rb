@@ -43,6 +43,13 @@ module Datyl
       raise "Configuration setup can't find the specified YAML file #{yaml_path}" unless File.exists? yaml_path
       raise "Configuration setup can't read the specified YAML file #{yaml_path}" unless File.readable? yaml_path
       raise "Configuration setup must be supplied with one or more sections for the yaml file #{yaml_path}" if sections.empty?
+
+      # handles nil value, which we expect people to make a mistake from missing environment variables.
+
+      sections.each do |sec|
+        raise "Configuration setup found a section name of class #{sec.class}, but only strings or symbols are allowed (sections arguments: #{sections.inspect})" unless [String, Symbol].include?(sec.class)
+      end
+
       begin
         @yaml = YAML.load_file yaml_path
       rescue => e

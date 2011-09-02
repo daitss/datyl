@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.name = 'datyl'
   s.version = version
   s.summary = 'A toolkit of support libraries for DAITSS.'
-  s.description = 'A toolkit of support libraries for DAITSS, including configuration, streams processing, tries, and more.'
+  s.description = 'A toolkit of support libraries for DAITSS, including configuration, streams processing, logging, tries, etc.'
 
   s.required_ruby_version = '>= 1.8.7'
 

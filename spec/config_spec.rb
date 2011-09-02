@@ -32,6 +32,10 @@ describe Config do
     lambda { Datyl::Config.new(test_config_filename, :foobar)}.should raise_error(/setup could not find a section named/i)
   end
 
+  it "should raise an error if a section variable is nil-valued" do
+    lambda { Datyl::Config.new(test_config_filename, nil) }.should raise_error(/found a section name of class NilClass/)
+  end
+
   it "should not raise an error if a section is empty" do
     lambda { Datyl::Config.new(test_config_filename, :daitss)}.should_not raise_error
   end
@@ -41,6 +45,12 @@ describe Config do
     conf.temp_dir_env.should == '/var/daitss/'
     conf.silo_connection_string.should == 'postgres://silo:mysecret@localhost/test_store_db'
   end
+
+  it "should properly find the keys froma particular section, when the section is named by a FQDN" do
+    conf = Datyl::Config.new(test_config_filename, 'store-master.fcla.edu')
+    conf.required_pools.should == 2
+  end
+
 
   it "should properly find all the keys from a particular section, when the section is named by a symbol (programmer styling points)" do
     conf = Datyl::Config.new(test_config_filename, :silos)
@@ -93,7 +103,7 @@ describe Config do
     what_is.should == what_should_be
   end
 
-  it "should raise error if method called with arguments" do
+  it "should raise error if an object method iscalled with arguments" do
     conf = Datyl::Config.new(test_config_filename, :fixity)
     lambda { conf.expiration_days(10)  }.should raise_error(/method expiration_days takes no arguments, but got 1/)
   end

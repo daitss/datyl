@@ -1,4 +1,5 @@
 require 'log4r'
+require 'log4r/outputter/rollingfileoutputter'
 require 'log4r/outputter/fileoutputter'
 require 'log4r/outputter/syslogoutputter'
 require 'socket'
@@ -108,6 +109,7 @@ module Datyl
       return unless (@@virtual_hostname and @@service_name)
       formatter = Log4r::PatternFormatter.new(:pattern => "%d %l %m")
       Log4r::Logger[@@virtual_hostname].add Log4r::FileOutputter.new(@@service_name, { :filename => filepath, :trunc => false, :formatter => formatter })
+      # Log4r::Logger[@@virtual_hostname].add Log4r::RollingFileOutputter.new(@@service_name, { :maxsize => 100 ,  :filename => filepath, :trunc => false, :formatter => formatter })
       filepath
     end
 

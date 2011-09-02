@@ -21,7 +21,11 @@ def pep333_env
 end
 
 
+# get the last line out of the logfile
+
 def getlog
+  # logfilename = `ls  #{File.join(File.dirname(__FILE__), 'test00*.log')}`.split.sort.pop
+
   File.read(logfile).split("\n").pop.strip
 end
 
@@ -35,9 +39,9 @@ describe Datyl::Logger do
   end
  
   it "should allow us to create a log object which writes to file, including severity (INFO) and initialization tag" do
-    logger = Datyl::Logger.new(:info, 'Tag:')
+    logger = Datyl::Logger.new(:info, 'My Tag:')
     logger.write('test')
-    getlog.should =~ /INFO Tag: test$/
+    getlog.should =~ /INFO My Tag: test$/
   end
 
   it "should include the date in the beginning of the logging output" do

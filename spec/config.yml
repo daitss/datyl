@@ -7,6 +7,9 @@ silos:
   temp_dir_env: /var/daitss/
   silo_connection_string: postgres://silo:mysecret@localhost/test_store_db
 
+store-master.fcla.edu:
+  required_pools: 2
+
 daitss:
 
 fixity:
