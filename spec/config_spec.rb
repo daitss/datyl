@@ -103,10 +103,21 @@ describe Config do
     what_is.should == what_should_be
   end
 
-  it "should raise error if an object method iscalled with arguments" do
+  it "should raise error if an object method is called with arguments" do
     conf = Datyl::Config.new(test_config_filename, :fixity)
     lambda { conf.expiration_days(10)  }.should raise_error(/method expiration_days takes no arguments, but got 1/)
   end
 
+  it "should let us add a new key to an initialized config object" do
+    conf = Datyl::Config.new(test_config_filename, :fixity)
+    conf['foo'] = :bar
+
+    conf.foo.should == :bar
+  end
+
+  it "should not let us add a key to an initialized config object if it already exists" do
+    conf = Datyl::Config.new(test_config_filename, :fixity)
+    lambda { conf['expiration_days'] = 10  }.should raise_error(/method expiration_days already exists/)
+  end
 
 end

@@ -5,28 +5,26 @@ module Datyl
   # The Config class acts a lot like a simple Struct, with named slots
   # read out of a configration file of key/value pairs. The
   # configuration file is a simple YAML file with specific named
-  # sections:
+  # sections.  For instance:
   #
   #    database:
   #      daitss_connection_string: postgres://daitss:topsecret@localhost/daitss_db
   #      storemaster_connection_string: postgres://storemaster:topsecret@localhost/daitss_db
   #      silo_connection_string: postgres://silo:topsecret@localhost/store_db
   #
-  #    silos:
+  #    silos.example.org:
   #      temp_dir_env: /var/daitss/
   #      silo_connection_string: postgres://silo:mysecret@localhost/test_store_db
   #
-  #    daitss:
   #       ....
   #
-
   # Each section contains simple key/value pairs. When we create a new
   # Config object, we specify what sections we're interested in. Each
   # section is processed in the order presented to the constructor, so
   # a key that's found in multiple sections (like the key
   # silo_connection_string above) gets the value of the last key
-  # encountered.
-
+  # encountered if both the 'database' and 'silos.example.org'
+  # sections are included.
   #
   # Typically, we expect a few global sections at the top of the file
   # and specified first in the constructor.
@@ -44,7 +42,7 @@ module Datyl
       raise "Configuration setup can't read the specified YAML file #{yaml_path}" unless File.readable? yaml_path
       raise "Configuration setup must be supplied with one or more sections for the yaml file #{yaml_path}" if sections.empty?
 
-      # handles nil value, which we expect people to make a mistake from missing environment variables.
+      # handles nil value, an easy-to-make error when a missing environment variable is used for a section name:
 
       sections.each do |sec|
         raise "Configuration setup found a section name of class #{sec.class}, but only strings or symbols are allowed (sections arguments: #{sections.inspect})" unless [String, Symbol].include?(sec.class)
@@ -57,20 +55,18 @@ module Datyl
       end
 
       if @yaml.class != Hash
-        raise "Configuration setup parsed the specified YAML file #{yaml_path}, but it's not a simple hash (it's a #{@yaml.class})"
+        raise "Configuration setup parsed the specified YAML file #{yaml_path}, but it's not the expected simple hash (it's a #{@yaml.class})"
       end
 
       @hash = Hash.new
-      
-      section_keys = @yaml.keys   # we may have an empy section - that should get it's own address
-      
+
       sections.each do |sect|
         sect = sect.to_s
-        
+
         data = @yaml[sect]
 
         next if data.nil? and @yaml.keys.include? sect     # catch empty section
-        
+
         if data.nil?
           raise "Configuration setup could not find a section named #{sect} in the specified YAML file #{yaml_path}"
         end
@@ -82,7 +78,7 @@ module Datyl
         data.each { |k,v|  @hash[k] = v }
       end
     end
-    
+
     def method_missing method, *args
       if not args.empty?
         raise "method #{method} takes no arguments, but got #{args.length}"
@@ -90,11 +86,6 @@ module Datyl
       return @hash[method.to_s]
     end
 
-    # No real reason to have this
-    #
-    # def []= key, value
-    #  @hash[key.to_s] = value
-    # end
 
     def [] key
       return @hash[key.to_s]
@@ -108,10 +99,18 @@ module Datyl
       @hash.values
     end
 
-    def each 
+    def each
       @hash.each do |k, v|
         yield k, v
       end
+    end
+
+    # it can be convenient to add an accessor to a config object (e.g. to set defaults for
+    # missing keys):
+
+    def []= key, value
+      raise "method #{key} already exists on this configuration object" if @hash.key? key
+      @hash[key.to_s] = value
     end
 
 
