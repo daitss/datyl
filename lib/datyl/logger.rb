@@ -157,12 +157,7 @@ module Datyl
     end
 
     def Logger.format_message message, env
-      if env.length > 0
-        suffix = apache_styling(env).strip 
-      else
-        suffix = ""
-      end
-
+      suffix = apache_styling(env).strip 
       prefix = message.strip
 
       return (prefix.empty? or suffix.empty?) ? prefix + suffix : prefix + ' ' + suffix
