@@ -13,9 +13,9 @@ module Datyl
   #
   #   rep = Reporter.new 'Important Report', 'This could be very important'
   #
-  #   rep.info 'This is a test.'      => Logs an info-level message 'Important Report: This is a test.'
-  #   rep.warn 'This is a warning.'   => Logs an warning-level message 'Important Report: This is a warning.'
-  #   rep.err  'This is an error.'    => Logs an error-level message 'Important Report: This is an error.'
+  #   rep.info 'This is a test.'      => Logs an info-level message:     'Important Report: This is a test.'
+  #   rep.warn 'This is a warning.'   => Logs an warning-level message:  'Important Report: This is a warning.'
+  #   rep.err  'This is an error.'    => Logs an error-level message:    'Important Report: This is an error.'
   #
   #   rep.write STDERR   => Produces on STDERR:
   #
@@ -38,7 +38,7 @@ module Datyl
 
   class Reporter
 
-    @@max_lines = 5000    # will only write this many lines of text - first half, '...', second half.
+    @@max_lines = 2000    # will only write this many lines of text - first half, '...', second half.
 
     attr_reader   :title, :counter
 
@@ -70,40 +70,62 @@ module Datyl
       @done = Time.now
     end
 
+    # Support for logging messages at various severity levels; slightly abbreviated data is recorded to a playback
+    # file.  Called with no arguments, just insert a blank line the playback file.
 
-    def info str = nil
+    def dolog *strs
       @counter += 1
-      Logger.info @title + ': ' + str  if str
-      @tempfile.puts(str ? str : '')
+      
+      strs.each do |str|
+        yield @title + ': ' + str unless str.empty?
+        @tempfile.puts str
+      end
+
+      @tempfile.puts('') if strs.empty?
     end
 
-    def warn str = nil
-      @counter += 1
-      Logger.warn  @title + ': ' + str  if str
-      @tempfile.puts(str ? str : '')
+    # Log messages using the INFO severity
+
+    def info *strs
+      dolog(*strs) { |s| Logger.info s }
     end
 
-    def err str = nil
-      @counter += 1
-      Logger.err  @title + ': ' + str  if str
-      @tempfile.puts(str ? str : '')
+    # Log messages using the WARN severity
+
+    def warn *strs
+      dolog(*strs) { |s| Logger.warn s }
     end
+
+    # Log messages using the ERR severity
+
+    def err *strs
+      dolog(*strs) { |s| Logger.err s }
+    end
+
 
     def rewind
       @tempfile.rewind
     end
 
+    # interesting? is true if anything has been reported - some reports could be empty
+
     def interesting?
       @counter > 0
     end
 
-    def top_lines
+    def _top_lines
       @@max_lines / 2 + (@@max_lines.odd? ? 1 : 0)
     end
 
-    def bottom_lines
+    def _bottom_lines
       @@max_lines / 2
     end
+
+    # Cycle through everything that's been written, yielding a line;
+    # if the report is large, the *middle* of the report is truncated.
+    # It's meant to be used in email reports. Only a total @@max_lines
+    # is provided split equally from from the the begginning and the
+    # end.
 
     def each
       title = @title + (@subtitle ? ": #{@subtitle}" : '') +  (@done ? sprintf(" (%3.2f seconds)", @done - @start) : '')
@@ -115,11 +137,11 @@ module Datyl
       if @counter > @@max_lines
         yield "Note: #{@counter - @@max_lines} of #{@counter} lines were discarded - see the system log for the complete report."
 
-        top_lines.times  { yield @tempfile.gets }           # print first half
+        _top_lines.times  { yield @tempfile.gets }           # print first half
 
         @tempfile.rewind
 
-        (@counter - bottom_lines).times { @tempfile.gets }  # discard middle
+        (@counter - _bottom_lines).times { @tempfile.gets }  # discard middle
 
         yield " ..."
 
@@ -138,13 +160,19 @@ module Datyl
     end
 
 
+    # Write the report to the provided IO object, STDOUT by default.
+    # Only @@max_lines lines of text are written, split equally
+    # between the beggining and end of the report, with an elipsis
+    # inserted in between.
+
     def write io = STDOUT
       each do |line|
         io.puts line
       end
     end
 
-    # A class version of the above, for immediate gratification
+    # A class version of the above which is immediately written out -
+    # it's a convenience routine.
 
     def self.note message, io = STDOUT
       Logger.info message

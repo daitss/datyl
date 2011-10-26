@@ -1,6 +1,9 @@
 require 'datyl/reporter'
 require 'tempfile'
 
+# Test playback functions of reporter - not we are not checking the Logging output part of the Reporter.
+
+
 $LOAD_PATH.unshift File.join(File.dirname(__FILE__), '..', 'lib')
 
 def output reporter
@@ -42,6 +45,21 @@ describe Datyl::Reporter do
     lines[2].should == 'An Error'
     lines[3].should == 'A Warning'
     lines[4].should == 'An Info'
+
+    text[-1].chr.should == "\n"   # indicates blank line
+    text[-2].chr.should == "\n"
+  end
+
+  it "should accept mutliple messages" do
+    report = Datyl::Reporter.new "Main Title", "Subtitle"
+    report.info 'This', 'is', 'a test'
+
+    text  = output(report)
+    lines = text.split("\n")
+
+    lines[2].should == 'This'
+    lines[3].should == 'is'
+    lines[4].should == 'a test'
 
     text[-1].chr.should == "\n"   # indicates blank line
     text[-2].chr.should == "\n"
