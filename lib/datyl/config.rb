@@ -29,8 +29,13 @@ module Datyl
   # Typically, we expect a few global sections at the top of the file
   # and specified first in the constructor.
 
-
   class Config
+
+    # Given a yaml file and a list of named sections, read each section in turn and add its key/values pairs
+    # to our object.
+    #
+    # @param [String] yaml_path, a filepath to a YAML configuration file
+    # @param [Array] sections, a list of sections, Strings, to include in our configuration object.
 
     def initialize yaml_path, *sections
 
@@ -79,6 +84,8 @@ module Datyl
       end
     end
 
+    private
+
     def method_missing method, *args
       if not args.empty?
         raise "method #{method} takes no arguments, but got #{args.length}"
@@ -86,18 +93,35 @@ module Datyl
       return @hash[method.to_s]
     end
 
+    public
+
+
+    # Look up a configuration value by key
+    #
+    # @param [String] key, the configuration key
+    # @return [Object] the associated value
 
     def [] key
       return @hash[key.to_s]
     end
 
+    # return all keys in arbitrary order
+    #
+    # @return [Array] a list of keys
+
     def keys
       @hash.keys
     end
+    
+    # return all values, in the same order as #keys
+    #
+    # @return [Array] a list of values
 
     def values
       @hash.values
     end
+
+    # iterate over all defined key/value pairs
 
     def each
       @hash.each do |k, v|
@@ -105,8 +129,10 @@ module Datyl
       end
     end
 
-    # it can be convenient to add an accessor to a config object (e.g. to set defaults for
-    # missing keys):
+    # Add an accessor to a config object (e.g. to set defaults for missing keys)
+    # 
+    # @param [String] key, a new key for the configuration object
+    # @param [Object] value, the associated value
 
     def []= key, value
       raise "method #{key} already exists on this configuration object" if @hash.key? key

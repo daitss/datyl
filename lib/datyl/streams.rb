@@ -3,32 +3,51 @@
   # (it must support <, >, ==); the values can be anything, but will
   # often be a string or an array of strings.  All streams must support
   # the following methods:
-
+  #
   #    new      - specialized processing for your constructor
   #    read     - return key, value pair, or nil if at end of stream
-  #    eos?     - true if at end of stream
+  #    eos?     - true if at end of stream (see ungetting? below)
   #    rewind   - resets the stream to the beginning and returns the stream
   #
-  # 
-  # Then include CommonStreamMethods, which give you:
+  # Then mix in CommonStreamMethods, which give you, based on the above:
   #
   #    each do |key, value| - successively yields key/value pairs off the stream after applying filters
   #    filters              - a list of procs (takes k, v; returns true/false) that will filter the stream provided by each (not get)
   #    get                  - reads a single key/value pair off the stream. Returns nil when there is no unget pending and your provided eos? is true.
-  #    unget                - push the last read key/value pair back on the stream, we'll get it on next pass - only one level deep allowed
+  #    unget                - push the last read key/value pair back on the stream, we'll get it on next pass - only one level deep allowed, which is plenty
   #    ungetting?           - for use in your eos? method, means there's a datum pending from a prior unget.
   #    <=> stream           - returns a specialized comparison stream between self and second stream
   #
   # Additionally, there should be a good diagnostic #to_s method on
   # all stream classes; that string will often appear in log messages.
-
+  #
+  # Applications using one of the provided Stream classes, or one you derive, should usually be limited to
+  #  
+  #   <=>
+  #   each
+  #   eos?
+  #   filters
+  #   get
+  #   new
+  #   rewind
+  #   unget
+  #
 
 module CommonStreamMethods
 
+  # Filters for limiting stream output from an each. Push onto this a
+  # proc that takes two arguments (key and value) and returns a
+  # boolean.  If any proc returns false, the key/value pair is
+  # discarded.
+  #
+  # Note that get doesn't support the filters; get is meant to be used
+  # internally in streams, but not from application code.
+  
   def filters
     @_filters ||= []
   end
 
+  # 
   def _passes_filters k, v      
     return false if k.nil?   
     filters.each do |proc|
@@ -36,6 +55,8 @@ module CommonStreamMethods
     end
     return true
   end
+
+  # one level of unget is supported
 
   def unget
     raise "streams error: cannot unget twice in a row" if @_handle_unget
@@ -45,6 +66,10 @@ module CommonStreamMethods
   def ungetting?
     @_handle_unget
   end
+
+  # get the next key/value store.  depends on read(), which is so
+  # abstract, it's non-existant (define it when you mix in this
+  # module)
 
   def get
     if ungetting?
@@ -121,15 +146,15 @@ module Streams
 
   end # of class DataFileStream
 
-  # UniqueStream takes a stream and filters it so that the returned
-  # stream's keys are always unique; if a UniqueStream encounters two
-  # identical keys, it returns the key/value pair of the first of
-  # them, discarding the subsequent ones.
-
-
   class UniqueStream 
 
     include CommonStreamMethods
+
+    # The UniqueStream constructor takes an existing stream and
+    # filters it so that the returned stream's keys are always unique;
+    # if a UniqueStream encounters two identical keys, it returns the
+    # key/value pair of the first of them, discarding the subsequent
+    # ones.
 
     def initialize stream
       @stream  = stream
@@ -168,14 +193,16 @@ module Streams
   end # of class UniqueStream
 
 
-  # FoldedStream is initialized from stream, returning a stream that
-  # has folded the values for identical keys together in an array.
-  # Thus the values for a FoldedStream are always an array, possibly
-  # of mixed arity. As for all streams, the keys must be sorted.
  
   class FoldedStream 
 
     include CommonStreamMethods
+
+    # A FoldedStream is initialized from an existing stream, returning
+    # a stream that has folded the values for identical keys together
+    # in an array.  Thus the values for a FoldedStream are always an
+    # array, possibly of mixed arity. As for all streams, the keys,
+    # strings, must be sorted.
 
     def initialize stream
       @stream  = stream
@@ -271,7 +298,6 @@ module Streams
   end # of class MultiStream 
 
 
-
   # ComparisonStream is a bit different from the other Stream classes in
   # that
   #    - it is created from exactly two streams
@@ -283,8 +309,9 @@ module Streams
   #
   # Note: the two input streams must have unique and sorted keys.
   #
-  # All basic streams support the <=> method,  which provides a
-  # comparison stream.
+  # All basic streams support the <=> method, which provides a
+  # comparison stream (the first stream is self, the second selected
+  # by the application).
 
   class ComparisonStream 
 
@@ -313,7 +340,7 @@ module Streams
     end
 
     def eos?
-      @first_stream.eos? and  @second_stream.eos?
+      @first_stream.eos? and @second_stream.eos?
     end
 
     def get

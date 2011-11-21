@@ -33,7 +33,7 @@ class Trie
   # Box let's us put a value into a box, then get it out of the box.
   # We need this because we'd like to store nil and false values on
   # a node slot.  So a slot can have one of two values: nil (meaning
-  # no value), or  a box (with some value in it, including nil).
+  # no value), or a box (with some value in it, including nil).
 
   class Box
 

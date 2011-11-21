@@ -78,15 +78,14 @@ module Datyl
     #
     # In logging the arguments are used as follows:
     #
-    # Dec 15 12:38:26 romeo-foxtrot SiloPool[51470]:  INFO silos.test.fcla.edu
-    #                               --------               -------------------
-    #                               @@service_name         @@virtual_hostname
+    #    Dec 15 12:38:26 romeo-foxtrot SiloPool[51470]:  INFO silos.test.fcla.edu
+    #                                  --------               -------------------
+    #                                  @@service_name         @@virtual_hostname
     #
     # It is recommented the virtual host name of the service be used for
     # @@virtual_hostname but it will default to the hostname of the
     # computer; @@service_name should not have any spaces, so the logs
     # can be conveniently parsed.
-
 
     def Logger.setup(service_name, virtual_hostname = nil)
       @@virtual_hostname = virtual_hostname || Socket.gethostname
@@ -201,10 +200,10 @@ module Datyl
     # entries, we also have an object we can instantiate for
     # Rack::CommonLogger or DataMapper::Logger to use. For example:
     #
-    #  Logger.setup('XmlResolutionService', 'xrez.example.com')
-    #  Logger.filename = 'my.log'
-    #  use Rack:CommonLogger, Logger.new(:info, 'Rack:')
-    #  DataMapper::Logger(Logger.new(:info, 'DataMapper:'), :debug)
+    #   Logger.setup('XmlResolutionService', 'xrez.example.com')
+    #   Logger.filename = 'my.log'
+    #   use Rack:CommonLogger, Logger.new(:info, 'Rack:')
+    #   DataMapper::Logger(Logger.new(:info, 'DataMapper:'), :debug)
 
     @level = nil
     @tag   = nil

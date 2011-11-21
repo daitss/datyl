@@ -1,1 +1,7 @@
-Common utility library for DAITSS
+Common utility library for DAITSS.  There are five systems here:
+
+ * Datyl::Config - a yaml-based configuration system
+ * Datyl::Logger - a log4r based logging system for use with sinatra
+ * Datyl::Reporter - combines logging of message, and recording those log messages for a written report, for instance, for emailing
+ * Streams - framework for creating streams of key/value pairs
+ * Trie - a kind of hash with interesting properties, such as longest common prefixes of keys
