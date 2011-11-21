@@ -2,17 +2,27 @@
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
-    <meta name="Content-Type" content="text/html; charset=utf-8" />
-<title>Class: Trie</title>
-<link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
-<link rel="stylesheet" href="css/common.css" type="text/css" media="screen" charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Class: Trie
+  
+    &mdash; datyl: daitss utilities
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" media="screen" charset="utf-8" />
 
 <script type="text/javascript" charset="utf-8">
   relpath = '';
   if (relpath != '') relpath += '/';
 </script>
-<script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
-<script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
 
   </head>
   <body>
@@ -33,11 +43,14 @@
 </div>
 
       <div id="search">
-  <a id="class_list_link" href="#">Class List</a>
-  <a id="method_list_link" href="#">Method List</a>
-  <a id ="file_list_link" href="#">File List</a>
+  
+    <a id="class_list_link" href="#">Class List</a>
+  
+    <a id="method_list_link" href="#">Method List</a>
+  
+    <a id="file_list_link" href="#">File List</a>
+  
 </div>
-
       <div class="clear"></div>
     </div>
     
@@ -81,41 +94,34 @@
 
 <h2>Overview</h2><div class="docstring">
   <div class="discussion">
-    <p>
--*- coding: utf-8 -*-
-</p>
-<p>
-Randy Fischer (rf@ufl.edu) reimplemented this wheel on 2010-06-13. 
-Pleasant exercise.
-</p>
-<p>
-Build a trie - my goal was to remove the largest common prefix from a list
+    
+<p>Randy Fischer (rf@ufl.edu) reimplemented this wheel on 2010-06-13. 
+Pleasant exercise.</p>
+
+<p>Build a trie - my goal was to remove the largest common prefix from a list
 of strings. See the twigs method to get that.  This also does the usual
-trie tricks: stores key/value pairs, orders the keys, etc.
-</p>
-<p>
-Example program:
-</p>
-<pre class="code">
- <span class='trie identifier id'>trie</span> <span class='assign token'>=</span> <span class='Trie constant id'>Trie</span><span class='dot token'>.</span><span class='new identifier id'>new</span>
- 
- <span class='trie identifier id'>trie</span><span class='lbrack token'>[</span><span class='string val'>'silos.darchive.fcla.edu:/daitssfs/001'</span><span class='rbrack token'>]</span> <span class='assign token'>=</span> <span class='symbol val'>:a</span>
- <span class='trie identifier id'>trie</span><span class='lbrack token'>[</span><span class='string val'>'silos.darchive.fcla.edu:/daitssfs/002'</span><span class='rbrack token'>]</span> <span class='assign token'>=</span> <span class='symbol val'>:b</span>
- <span class='trie identifier id'>trie</span><span class='lbrack token'>[</span><span class='string val'>'silos.darchive.fcla.edu:/daitssfs/002'</span><span class='rbrack token'>]</span> <span class='assign token'>=</span> <span class='symbol val'>:c</span>
- <span class='trie identifier id'>trie</span><span class='lbrack token'>[</span><span class='string val'>'silos.darchive.fcla.edu:/daitssfs/004'</span><span class='rbrack token'>]</span> <span class='assign token'>=</span> <span class='symbol val'>:d</span>
- <span class='trie identifier id'>trie</span><span class='lbrack token'>[</span><span class='string val'>'silos.darchive.fcla.edu:/daitssfs/010'</span><span class='rbrack token'>]</span> <span class='assign token'>=</span> <span class='symbol val'>:e</span>
- <span class='trie identifier id'>trie</span><span class='lbrack token'>[</span><span class='string val'>'silos.darchive.fcla.edu:/daitssfs/015'</span><span class='rbrack token'>]</span> <span class='assign token'>=</span> <span class='symbol val'>:f</span>
- <span class='trie identifier id'>trie</span><span class='lbrack token'>[</span><span class='string val'>'silos.darchive.fcla.edu:/daitssfs/027'</span><span class='rbrack token'>]</span> <span class='assign token'>=</span> <span class='symbol val'>:g</span>
+trie tricks: stores key/value pairs, orders the keys, etc.</p>
 
- <span class='trie identifier id'>trie</span><span class='lbrack token'>[</span><span class='string val'>'silos.darchive.fcla.edu:/daitssfs/002'</span><span class='rbrack token'>]</span>     <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='symbol val'>:c</span>
+<p>Example program:</p>
 
- 
- <span class='trie identifier id'>trie</span><span class='dot token'>.</span><span class='keys identifier id'>keys</span>   <span class='assign token'>=</span><span class='gt op'>&gt;</span>  <span class='lbrack token'>[</span> <span class='string val'>&quot;silos.darchive.fcla.edu:/daitssfs/001&quot;</span><span class='comma token'>,</span> <span class='string val'>&quot;silos.darchive.fcla.edu:/daitssfs/002&quot;</span><span class='comma token'>,</span> <span class='dot2 op'>..</span> <span class='rbrack token'>]</span>
- <span class='trie identifier id'>trie</span><span class='dot token'>.</span><span class='values identifier id'>values</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span>  <span class='lbrack token'>[</span> <span class='symbol val'>:a</span><span class='comma token'>,</span> <span class='symbol val'>:c</span><span class='comma token'>,</span> <span class='symbol val'>:d</span><span class='comma token'>,</span> <span class='symbol val'>:e</span><span class='comma token'>,</span> <span class='symbol val'>:f</span><span class='comma token'>,</span> <span class='symbol val'>:g</span> <span class='rbrack token'>]</span>
+<pre class="code"><span class='trie identifier id'>trie</span> <span class='assign token'>=</span> <span class='Trie constant id'>Trie</span><span class='dot token'>.</span><span class='new identifier id'>new</span>
 
- <span class='trie identifier id'>trie</span><span class='dot token'>.</span><span class='prefix identifier id'>prefix</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>'silos.darchive.fcla.edu:/daitssfs/0'</span>
- 
- <span class='trie identifier id'>trie</span><span class='dot token'>.</span><span class='twigs identifier id'>twigs</span>  <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='lbrack token'>[</span> <span class='string val'>'01'</span><span class='comma token'>,</span> <span class='string val'>'02'</span><span class='comma token'>,</span> <span class='string val'>'04'</span><span class='comma token'>,</span> <span class='string val'>'10'</span><span class='comma token'>,</span> <span class='string val'>'15'</span><span class='comma token'>,</span> <span class='string val'>'27'</span> <span class='rbrack token'>]</span>
+<span class='trie identifier id'>trie</span><span class='lbrack token'>[</span><span class='string val'>'silos.darchive.fcla.edu:/daitssfs/001'</span><span class='rbrack token'>]</span> <span class='assign token'>=</span> <span class='symbol val'>:a</span>
+<span class='trie identifier id'>trie</span><span class='lbrack token'>[</span><span class='string val'>'silos.darchive.fcla.edu:/daitssfs/002'</span><span class='rbrack token'>]</span> <span class='assign token'>=</span> <span class='symbol val'>:b</span>
+<span class='trie identifier id'>trie</span><span class='lbrack token'>[</span><span class='string val'>'silos.darchive.fcla.edu:/daitssfs/002'</span><span class='rbrack token'>]</span> <span class='assign token'>=</span> <span class='symbol val'>:c</span>
+<span class='trie identifier id'>trie</span><span class='lbrack token'>[</span><span class='string val'>'silos.darchive.fcla.edu:/daitssfs/004'</span><span class='rbrack token'>]</span> <span class='assign token'>=</span> <span class='symbol val'>:d</span>
+<span class='trie identifier id'>trie</span><span class='lbrack token'>[</span><span class='string val'>'silos.darchive.fcla.edu:/daitssfs/010'</span><span class='rbrack token'>]</span> <span class='assign token'>=</span> <span class='symbol val'>:e</span>
+<span class='trie identifier id'>trie</span><span class='lbrack token'>[</span><span class='string val'>'silos.darchive.fcla.edu:/daitssfs/015'</span><span class='rbrack token'>]</span> <span class='assign token'>=</span> <span class='symbol val'>:f</span>
+<span class='trie identifier id'>trie</span><span class='lbrack token'>[</span><span class='string val'>'silos.darchive.fcla.edu:/daitssfs/027'</span><span class='rbrack token'>]</span> <span class='assign token'>=</span> <span class='symbol val'>:g</span>
+
+<span class='trie identifier id'>trie</span><span class='lbrack token'>[</span><span class='string val'>'silos.darchive.fcla.edu:/daitssfs/002'</span><span class='rbrack token'>]</span>     <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='symbol val'>:c</span>
+
+<span class='trie identifier id'>trie</span><span class='dot token'>.</span><span class='keys identifier id'>keys</span>   <span class='assign token'>=</span><span class='gt op'>&gt;</span>  <span class='lbrack token'>[</span> <span class='string val'>&quot;silos.darchive.fcla.edu:/daitssfs/001&quot;</span><span class='comma token'>,</span> <span class='string val'>&quot;silos.darchive.fcla.edu:/daitssfs/002&quot;</span><span class='comma token'>,</span> <span class='dot2 op'>..</span> <span class='rbrack token'>]</span>
+<span class='trie identifier id'>trie</span><span class='dot token'>.</span><span class='values identifier id'>values</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span>  <span class='lbrack token'>[</span> <span class='symbol val'>:a</span><span class='comma token'>,</span> <span class='symbol val'>:c</span><span class='comma token'>,</span> <span class='symbol val'>:d</span><span class='comma token'>,</span> <span class='symbol val'>:e</span><span class='comma token'>,</span> <span class='symbol val'>:f</span><span class='comma token'>,</span> <span class='symbol val'>:g</span> <span class='rbrack token'>]</span>
+
+<span class='trie identifier id'>trie</span><span class='dot token'>.</span><span class='prefix identifier id'>prefix</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>'silos.darchive.fcla.edu:/daitssfs/0'</span>
+
+<span class='trie identifier id'>trie</span><span class='dot token'>.</span><span class='twigs identifier id'>twigs</span>  <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='lbrack token'>[</span> <span class='string val'>'01'</span><span class='comma token'>,</span> <span class='string val'>'02'</span><span class='comma token'>,</span> <span class='string val'>'04'</span><span class='comma token'>,</span> <span class='string val'>'10'</span><span class='comma token'>,</span> <span class='string val'>'15'</span><span class='comma token'>,</span> <span class='string val'>'27'</span> <span class='rbrack token'>]</span>
 </pre>
 
 
@@ -123,6 +129,7 @@ Example program:
 </div>
 <div class="tags">
   
+
 </div><h2>Defined Under Namespace</h2>
 <p class="children">
    
@@ -157,15 +164,16 @@ Example program:
   
 
   
-    <span class="summary_desc"><div class='inline'><p>
-Returns the value of attribute root.
-</p>
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the value of attribute root.</p>
 </div></span>
   
 </li>
 
     
   </ul>
+
+
 
 
   
@@ -234,9 +242,8 @@ Returns the value of attribute root.
   
 
   
-    <span class="summary_desc"><div class='inline'><p>
-Huh.
-</p>
+    <span class="summary_desc"><div class='inline'>
+<p>Huh.</p>
 </div></span>
   
 </li>
@@ -258,9 +265,8 @@ Huh.
   
 
   
-    <span class="summary_desc"><div class='inline'><p>
-Find all keys.
-</p>
+    <span class="summary_desc"><div class='inline'>
+<p>Find all keys.</p>
 </div></span>
   
 </li>
@@ -282,9 +288,8 @@ Find all keys.
   
 
   
-    <span class="summary_desc"><div class='inline'><p>
-Find all values, same order as corresponding keys are returned.
-</p>
+    <span class="summary_desc"><div class='inline'>
+<p>Find all values, same order as corresponding keys are returned.</p>
 </div></span>
   
 </li>
@@ -308,9 +313,8 @@ Find all values, same order as corresponding keys are returned.
   
 
   
-    <span class="summary_desc"><div class='inline'><p>
-Our trie starts with a node with an empty string.
-</p>
+    <span class="summary_desc"><div class='inline'>
+<p>Our trie starts with a node with an empty string.</p>
 </div></span>
   
 </li>
@@ -353,9 +357,8 @@ Our trie starts with a node with an empty string.
   
 
   
-    <span class="summary_desc"><div class='inline'><p>
-Lookup value for a key.
-</p>
+    <span class="summary_desc"><div class='inline'>
+<p>Lookup value for a key.</p>
 </div></span>
   
 </li>
@@ -377,9 +380,8 @@ Lookup value for a key.
   
 
   
-    <span class="summary_desc"><div class='inline'><p>
-Return longest common prefix from the trie.
-</p>
+    <span class="summary_desc"><div class='inline'>
+<p>Return longest common prefix from the trie.</p>
 </div></span>
   
 </li>
@@ -401,9 +403,8 @@ Return longest common prefix from the trie.
   
 
   
-    <span class="summary_desc"><div class='inline'><p>
-Store a value for a key.
-</p>
+    <span class="summary_desc"><div class='inline'>
+<p>Store a value for a key.</p>
 </div></span>
   
 </li>
@@ -425,10 +426,9 @@ Store a value for a key.
   
 
   
-    <span class="summary_desc"><div class='inline'><p>
-There&#8217;s a broken by design bug in here: if the largest common prefix
-is itself a key, we&#8217;ll get an empty string.
-</p>
+    <span class="summary_desc"><div class='inline'>
+<p>There’s a broken by design bug in here: if the largest common prefix is
+itself a key, we’ll get an empty string.</p>
 </div></span>
   
 </li>
@@ -470,15 +470,15 @@ is itself a key, we&#8217;ll get an empty string.
   
 </p><div class="docstring">
   <div class="discussion">
-    <p>
-Our trie starts with a node with an empty string.
-</p>
+    
+<p>Our trie starts with a node with an empty string.</p>
 
 
   </div>
 </div>
 <div class="tags">
   
+
 </div><table class="source_code">
   <tr>
     <td>
@@ -518,15 +518,15 @@ Our trie starts with a node with an empty string.
   
 </p><div class="docstring">
   <div class="discussion">
-    <p>
-Returns the value of attribute root
-</p>
+    
+<p>Returns the value of attribute root</p>
 
 
   </div>
 </div>
 <div class="tags">
   
+
 </div><table class="source_code">
   <tr>
     <td>
@@ -627,15 +627,15 @@ Returns the value of attribute root
   
 </p><div class="docstring">
   <div class="discussion">
-    <p>
-Huh.  Must be for debugging or sumthin&#8230;
-</p>
+    
+<p>Huh.  Must be for debugging or sumthin…</p>
 
 
   </div>
 </div>
 <div class="tags">
   
+
 </div><table class="source_code">
   <tr>
     <td>
@@ -673,15 +673,15 @@ Huh.  Must be for debugging or sumthin&#8230;
   
 </p><div class="docstring">
   <div class="discussion">
-    <p>
-Find all keys. Helper for method keys.
-</p>
+    
+<p>Find all keys. Helper for method keys.</p>
 
 
   </div>
 </div>
 <div class="tags">
   
+
 </div><table class="source_code">
   <tr>
     <td>
@@ -719,16 +719,16 @@ Find all keys. Helper for method keys.
   
 </p><div class="docstring">
   <div class="discussion">
-    <p>
-Find all values, same order as corresponding keys are returned. Helper for
-method values.
-</p>
+    
+<p>Find all values, same order as corresponding keys are returned. Helper for
+method values.</p>
 
 
   </div>
 </div>
 <div class="tags">
   
+
 </div><table class="source_code">
   <tr>
     <td>
@@ -799,15 +799,15 @@ method values.
   
 </p><div class="docstring">
   <div class="discussion">
-    <p>
-Lookup value for a key. Used for []
-</p>
+    
+<p>Lookup value for a key. Used for []</p>
 
 
   </div>
 </div>
 <div class="tags">
   
+
 </div><table class="source_code">
   <tr>
     <td>
@@ -861,15 +861,15 @@ Lookup value for a key. Used for []
   
 </p><div class="docstring">
   <div class="discussion">
-    <p>
-Return longest common prefix from the trie.
-</p>
+    
+<p>Return longest common prefix from the trie.</p>
 
 
   </div>
 </div>
 <div class="tags">
   
+
 </div><table class="source_code">
   <tr>
     <td>
@@ -903,15 +903,15 @@ Return longest common prefix from the trie.
   
 </p><div class="docstring">
   <div class="discussion">
-    <p>
-Store a value for a key. Used for []= above.
-</p>
+    
+<p>Store a value for a key. Used for []= above.</p>
 
 
   </div>
 </div>
 <div class="tags">
   
+
 </div><table class="source_code">
   <tr>
     <td>
@@ -965,17 +965,17 @@ Store a value for a key. Used for []= above.
   
 </p><div class="docstring">
   <div class="discussion">
-    <p>
-There&#8217;s a broken by design bug in here: if the largest common prefix
-is itself a key, we&#8217;ll get an empty string. You&#8217;ll need to
-check for that case. TODO: fix that.
-</p>
+    
+<p>There’s a broken by design bug in here: if the largest common prefix is
+itself a key, we’ll get an empty string. You’ll need to check for that
+case. TODO: fix that.</p>
 
 
   </div>
 </div>
 <div class="tags">
   
+
 </div><table class="source_code">
   <tr>
     <td>
@@ -1038,9 +1038,9 @@ check for that case. TODO: fix that.
 </div>
     
     <div id="footer">
-  Generated on Fri Aug  5 19:11:53 2011 by 
+  Generated on Mon Nov 21 11:33:11 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.6.0 (ruby-1.8.7).
+  0.7.3 (ruby-1.8.7).
 </div>
 
   </body>

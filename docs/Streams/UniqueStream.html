@@ -2,17 +2,27 @@
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
-    <meta name="Content-Type" content="text/html; charset=utf-8" />
-<title>Class: Streams::UniqueStream</title>
-<link rel="stylesheet" href="../css/style.css" type="text/css" media="screen" charset="utf-8" />
-<link rel="stylesheet" href="../css/common.css" type="text/css" media="screen" charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Class: Streams::UniqueStream
+  
+    &mdash; datyl: daitss utilities
+  
+</title>
+
+  <link rel="stylesheet" href="../css/style.css" type="text/css" media="screen" charset="utf-8" />
+
+  <link rel="stylesheet" href="../css/common.css" type="text/css" media="screen" charset="utf-8" />
 
 <script type="text/javascript" charset="utf-8">
   relpath = '..';
   if (relpath != '') relpath += '/';
 </script>
-<script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
-<script type="text/javascript" charset="utf-8" src="../js/app.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../js/app.js"></script>
+
 
   </head>
   <body>
@@ -33,11 +43,14 @@
 </div>
 
       <div id="search">
-  <a id="class_list_link" href="#">Class List</a>
-  <a id="method_list_link" href="#">Method List</a>
-  <a id ="file_list_link" href="#">File List</a>
+  
+    <a id="class_list_link" href="#">Class List</a>
+  
+    <a id="method_list_link" href="#">Method List</a>
+  
+    <a id="file_list_link" href="#">File List</a>
+  
 </div>
-
       <div class="clear"></div>
     </div>
     
@@ -90,6 +103,11 @@
   
   
 
+
+  
+  
+  
+
   
     <h2>
       Instance Method Summary
@@ -137,9 +155,11 @@
   
 
   
-    <span class="summary_desc"><div class='inline'><p>
-A new instance of UniqueStream.
-</p>
+    <span class="summary_desc"><div class='inline'>
+<p>The UniqueStream constructor takes an existing stream and filters it so
+that the returned stream’s keys are always unique; if a UniqueStream
+encounters two identical keys, it returns the key/value pair of the first
+of them, discarding the subsequent ones.</p>
 </div></span>
   
 </li>
@@ -220,7 +240,7 @@ A new instance of UniqueStream.
   
   
   <h3 class="inherited">Methods included from <span class='object_link'><a href="../CommonStreamMethods.html" title="CommonStreamMethods (module)">CommonStreamMethods</a></span></h3>
-  <p class="inherited"><span class='object_link'><a href="../CommonStreamMethods.html#%3C%3D%3E-instance_method" title="CommonStreamMethods#<=> (method)">#<=></a></span>, <span class='object_link'><a href="../CommonStreamMethods.html#_passes_filters-instance_method" title="CommonStreamMethods#_passes_filters (method)">#_passes_filters</a></span>, <span class='object_link'><a href="../CommonStreamMethods.html#each-instance_method" title="CommonStreamMethods#each (method)">#each</a></span>, <span class='object_link'><a href="../CommonStreamMethods.html#filters-instance_method" title="CommonStreamMethods#filters (method)">#filters</a></span>, <span class='object_link'><a href="../CommonStreamMethods.html#get-instance_method" title="CommonStreamMethods#get (method)">#get</a></span>, <span class='object_link'><a href="../CommonStreamMethods.html#unget-instance_method" title="CommonStreamMethods#unget (method)">#unget</a></span>, <span class='object_link'><a href="../CommonStreamMethods.html#ungetting%3F-instance_method" title="CommonStreamMethods#ungetting? (method)">#ungetting?</a></span></p>
+  <p class="inherited"><span class='object_link'><a href="../CommonStreamMethods.html#%3C%3D%3E-instance_method" title="CommonStreamMethods#&lt;=&gt; (method)">#<=></a></span>, <span class='object_link'><a href="../CommonStreamMethods.html#_passes_filters-instance_method" title="CommonStreamMethods#_passes_filters (method)">#_passes_filters</a></span>, <span class='object_link'><a href="../CommonStreamMethods.html#each-instance_method" title="CommonStreamMethods#each (method)">#each</a></span>, <span class='object_link'><a href="../CommonStreamMethods.html#filters-instance_method" title="CommonStreamMethods#filters (method)">#filters</a></span>, <span class='object_link'><a href="../CommonStreamMethods.html#get-instance_method" title="CommonStreamMethods#get (method)">#get</a></span>, <span class='object_link'><a href="../CommonStreamMethods.html#unget-instance_method" title="CommonStreamMethods#unget (method)">#unget</a></span>, <span class='object_link'><a href="../CommonStreamMethods.html#ungetting%3F-instance_method" title="CommonStreamMethods#ungetting? (method)">#ungetting?</a></span></p>
 <div id="constructor_details" class="method_details_list">
   <h2>Constructor Details</h2>
   
@@ -233,27 +253,30 @@ A new instance of UniqueStream.
   
 </p><div class="docstring">
   <div class="discussion">
-    <p>
-A new instance of UniqueStream
-</p>
+    
+<p>The UniqueStream constructor takes an existing stream and filters it so
+that the returned stream’s keys are always unique; if a UniqueStream
+encounters two identical keys, it returns the key/value pair of the first
+of them, discarding the subsequent ones.</p>
 
 
   </div>
 </div>
 <div class="tags">
   
+
 </div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-134
-135
-136</pre>
+159
+160
+161</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File '/Users/fischer/WorkProjects/daitss2/datyl/lib/datyl/streams.rb', line 134</span>
+      <pre class="code"><span class="info file"># File '/Users/fischer/WorkProjects/daitss2/datyl/lib/datyl/streams.rb', line 159</span>
 
 <span class='def def kw'>def</span> <span class='initialize identifier id'>initialize</span> <span class='stream identifier id'>stream</span>
   <span class='@stream ivar id'>@stream</span>  <span class='assign token'>=</span> <span class='stream identifier id'>stream</span>
@@ -285,13 +308,14 @@ A new instance of UniqueStream
   </div>
 </div>
 <div class="tags">
-  <h3>Returns:</h3>
+  
+<h3>Returns:</h3>
 <ul class="return">
   
     <li>
       
-        <span class='type'>(<tt>Boolean</tt>)</span>
       
+        <span class='type'>(<tt>Boolean</tt>)</span>
       
       
       
@@ -305,12 +329,12 @@ A new instance of UniqueStream
       <pre class="lines">
 
 
-142
-143
-144</pre>
+167
+168
+169</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File '/Users/fischer/WorkProjects/daitss2/datyl/lib/datyl/streams.rb', line 142</span>
+      <pre class="code"><span class="info file"># File '/Users/fischer/WorkProjects/daitss2/datyl/lib/datyl/streams.rb', line 167</span>
 
 <span class='def def kw'>def</span> <span class='eos? fid id'>eos?</span>
   <span class='@stream ivar id'>@stream</span><span class='dot token'>.</span><span class='eos? fid id'>eos?</span>
@@ -334,26 +358,26 @@ A new instance of UniqueStream
       <pre class="lines">
 
 
-150
-151
-152
-153
-154
-155
-156
-157
-158
-159
-160
-161
-162
-163
-164
-165
-166</pre>
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File '/Users/fischer/WorkProjects/daitss2/datyl/lib/datyl/streams.rb', line 150</span>
+      <pre class="code"><span class="info file"># File '/Users/fischer/WorkProjects/daitss2/datyl/lib/datyl/streams.rb', line 175</span>
 
 <span class='def def kw'>def</span> <span class='read identifier id'>read</span>
   <span class='return return kw'>return</span> <span class='unless unless_mod kw'>unless</span> <span class='upcoming identifier id'>upcoming</span> <span class='assign token'>=</span> <span class='@stream ivar id'>@stream</span><span class='dot token'>.</span><span class='get identifier id'>get</span>
@@ -391,12 +415,12 @@ A new instance of UniqueStream
       <pre class="lines">
 
 
-146
-147
-148</pre>
+171
+172
+173</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File '/Users/fischer/WorkProjects/daitss2/datyl/lib/datyl/streams.rb', line 146</span>
+      <pre class="code"><span class="info file"># File '/Users/fischer/WorkProjects/daitss2/datyl/lib/datyl/streams.rb', line 171</span>
 
 <span class='def def kw'>def</span> <span class='rewind identifier id'>rewind</span>
   <span class='@stream ivar id'>@stream</span><span class='dot token'>.</span><span class='rewind identifier id'>rewind</span>
@@ -420,12 +444,12 @@ A new instance of UniqueStream
       <pre class="lines">
 
 
-138
-139
-140</pre>
+163
+164
+165</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File '/Users/fischer/WorkProjects/daitss2/datyl/lib/datyl/streams.rb', line 138</span>
+      <pre class="code"><span class="info file"># File '/Users/fischer/WorkProjects/daitss2/datyl/lib/datyl/streams.rb', line 163</span>
 
 <span class='def def kw'>def</span> <span class='to_s identifier id'>to_s</span>
   <span class='dstring node'>&quot;#&lt;#{self.class} wrapping #{@stream.to_s}&gt;&quot;</span>
@@ -441,9 +465,9 @@ A new instance of UniqueStream
 </div>
     
     <div id="footer">
-  Generated on Fri Aug  5 19:11:50 2011 by 
+  Generated on Mon Nov 21 11:33:15 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.6.0 (ruby-1.8.7).
+  0.7.3 (ruby-1.8.7).
 </div>
 
   </body>

@@ -2,17 +2,27 @@
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
-    <meta name="Content-Type" content="text/html; charset=utf-8" />
-<title>Class: Streams::ComparisonStream</title>
-<link rel="stylesheet" href="../css/style.css" type="text/css" media="screen" charset="utf-8" />
-<link rel="stylesheet" href="../css/common.css" type="text/css" media="screen" charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Class: Streams::ComparisonStream
+  
+    &mdash; datyl: daitss utilities
+  
+</title>
+
+  <link rel="stylesheet" href="../css/style.css" type="text/css" media="screen" charset="utf-8" />
+
+  <link rel="stylesheet" href="../css/common.css" type="text/css" media="screen" charset="utf-8" />
 
 <script type="text/javascript" charset="utf-8">
   relpath = '..';
   if (relpath != '') relpath += '/';
 </script>
-<script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
-<script type="text/javascript" charset="utf-8" src="../js/app.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../js/app.js"></script>
+
 
   </head>
   <body>
@@ -33,11 +43,14 @@
 </div>
 
       <div id="search">
-  <a id="class_list_link" href="#">Class List</a>
-  <a id="method_list_link" href="#">Method List</a>
-  <a id ="file_list_link" href="#">File List</a>
+  
+    <a id="class_list_link" href="#">Class List</a>
+  
+    <a id="method_list_link" href="#">Method List</a>
+  
+    <a id="file_list_link" href="#">File List</a>
+  
 </div>
-
       <div class="clear"></div>
     </div>
     
@@ -81,30 +94,28 @@
 
 <h2>Overview</h2><div class="docstring">
   <div class="discussion">
-    <p>
-ComparisonStream is a bit different from the other Stream classes in that
-</p>
-<pre class="code">
-   <span class='minus op'>-</span> <span class='it identifier id'>it</span> <span class='is identifier id'>is</span> <span class='created identifier id'>created</span> <span class='from identifier id'>from</span> <span class='exactly identifier id'>exactly</span> <span class='two identifier id'>two</span> <span class='streams identifier id'>streams</span>
-   <span class='minus op'>-</span> <span class='ComparisonStream constant id'>ComparisonStream</span><span class='comment val'>#each always yields the key and two data values:</span>
+    
+<p>ComparisonStream is a bit different from the other Stream classes in that</p>
 
-  <span class='keys identifier id'>keys</span> <span class='are identifier id'>are</span> <span class='present identifier id'>present</span> <span class='in in kw'>in</span> <span class='both identifier id'>both</span> <span class='streams identifier id'>streams</span>     <span class='minus op'>-</span> <span class='yields identifier id'>yields</span> <span class='key identifier id'>key</span><span class='comma token'>,</span>  <span class='data identifier id'>data</span><span class='minus op'>-</span><span class='integer val'>1</span><span class='comma token'>,</span> <span class='data identifier id'>data</span><span class='minus op'>-</span><span class='integer val'>2</span>
-  <span class='key identifier id'>key</span> <span class='exists identifier id'>exists</span> <span class='only identifier id'>only</span> <span class='on identifier id'>on</span> <span class='the identifier id'>the</span> <span class='first identifier id'>first</span> <span class='stream identifier id'>stream</span>  <span class='minus op'>-</span> <span class='yields identifier id'>yields</span> <span class='key identifier id'>key</span><span class='comma token'>,</span>  <span class='data identifier id'>data</span><span class='minus op'>-</span><span class='integer val'>1</span><span class='comma token'>,</span> <span class='nil nil kw'>nil</span>
-  <span class='key identifier id'>key</span> <span class='exists identifier id'>exists</span> <span class='only identifier id'>only</span> <span class='on identifier id'>on</span> <span class='the identifier id'>the</span> <span class='second identifier id'>second</span> <span class='stream identifier id'>stream</span> <span class='minus op'>-</span> <span class='yields identifier id'>yields</span> <span class='key identifier id'>key</span><span class='comma token'>,</span>  <span class='nil nil kw'>nil</span><span class='comma token'>,</span>    <span class='data identifier id'>data</span><span class='minus op'>-</span><span class='integer val'>2</span>
+<pre class="code"> <span class='minus op'>-</span> <span class='it identifier id'>it</span> <span class='is identifier id'>is</span> <span class='created identifier id'>created</span> <span class='from identifier id'>from</span> <span class='exactly identifier id'>exactly</span> <span class='two identifier id'>two</span> <span class='streams identifier id'>streams</span>
+ <span class='minus op'>-</span> <span class='ComparisonStream constant id'>ComparisonStream</span><span class='comment val'>#each always yields the key and two data values:</span>
+
+<span class='keys identifier id'>keys</span> <span class='are identifier id'>are</span> <span class='present identifier id'>present</span> <span class='in in kw'>in</span> <span class='both identifier id'>both</span> <span class='streams identifier id'>streams</span>     <span class='minus op'>-</span> <span class='yields identifier id'>yields</span> <span class='key identifier id'>key</span><span class='comma token'>,</span>  <span class='data identifier id'>data</span><span class='minus op'>-</span><span class='integer val'>1</span><span class='comma token'>,</span> <span class='data identifier id'>data</span><span class='minus op'>-</span><span class='integer val'>2</span>
+<span class='key identifier id'>key</span> <span class='exists identifier id'>exists</span> <span class='only identifier id'>only</span> <span class='on identifier id'>on</span> <span class='the identifier id'>the</span> <span class='first identifier id'>first</span> <span class='stream identifier id'>stream</span>  <span class='minus op'>-</span> <span class='yields identifier id'>yields</span> <span class='key identifier id'>key</span><span class='comma token'>,</span>  <span class='data identifier id'>data</span><span class='minus op'>-</span><span class='integer val'>1</span><span class='comma token'>,</span> <span class='nil nil kw'>nil</span>
+<span class='key identifier id'>key</span> <span class='exists identifier id'>exists</span> <span class='only identifier id'>only</span> <span class='on identifier id'>on</span> <span class='the identifier id'>the</span> <span class='second identifier id'>second</span> <span class='stream identifier id'>stream</span> <span class='minus op'>-</span> <span class='yields identifier id'>yields</span> <span class='key identifier id'>key</span><span class='comma token'>,</span>  <span class='nil nil kw'>nil</span><span class='comma token'>,</span>    <span class='data identifier id'>data</span><span class='minus op'>-</span><span class='integer val'>2</span>
 </pre>
-<p>
-Note: the two input streams must have unique and sorted keys.
-</p>
-<p>
-All basic streams support the <=> method,  which provides a comparison
-stream.
-</p>
+
+<p>Note: the two input streams must have unique and sorted keys.</p>
+
+<p>All basic streams support the &lt;=&gt; method, which provides a comparison
+stream (the first stream is self, the second selected by the application).</p>
 
 
   </div>
 </div>
 <div class="tags">
   
+
 </div>
 
   <h2>Instance Attribute Summary <small>(<a href="#" class="summary_toggle">collapse</a>)</small></h2>
@@ -129,15 +140,16 @@ stream.
   
 
   
-    <span class="summary_desc"><div class='inline'><p>
-Returns the value of attribute streams.
-</p>
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the value of attribute streams.</p>
 </div></span>
   
 </li>
 
     
   </ul>
+
+
 
 
   
@@ -229,9 +241,8 @@ Returns the value of attribute streams.
   
 
   
-    <span class="summary_desc"><div class='inline'><p>
-A new instance of ComparisonStream.
-</p>
+    <span class="summary_desc"><div class='inline'>
+<p>A new instance of ComparisonStream.</p>
 </div></span>
   
 </li>
@@ -294,29 +305,29 @@ A new instance of ComparisonStream.
   
 </p><div class="docstring">
   <div class="discussion">
-    <p>
-A new instance of ComparisonStream
-</p>
+    
+<p>A new instance of ComparisonStream</p>
 
 
   </div>
 </div>
 <div class="tags">
   
+
 </div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-293
-294
-295
-296
-297</pre>
+320
+321
+322
+323
+324</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File '/Users/fischer/WorkProjects/daitss2/datyl/lib/datyl/streams.rb', line 293</span>
+      <pre class="code"><span class="info file"># File '/Users/fischer/WorkProjects/daitss2/datyl/lib/datyl/streams.rb', line 320</span>
 
 <span class='def def kw'>def</span> <span class='initialize identifier id'>initialize</span> <span class='first_stream identifier id'>first_stream</span><span class='comma token'>,</span> <span class='second_stream identifier id'>second_stream</span>
   <span class='@first_stream ivar id'>@first_stream</span>  <span class='assign token'>=</span> <span class='first_stream identifier id'>first_stream</span>
@@ -346,27 +357,27 @@ A new instance of ComparisonStream
   
 </p><div class="docstring">
   <div class="discussion">
-    <p>
-Returns the value of attribute streams
-</p>
+    
+<p>Returns the value of attribute streams</p>
 
 
   </div>
 </div>
 <div class="tags">
   
+
 </div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-291
-292
-293</pre>
+318
+319
+320</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File '/Users/fischer/WorkProjects/daitss2/datyl/lib/datyl/streams.rb', line 291</span>
+      <pre class="code"><span class="info file"># File '/Users/fischer/WorkProjects/daitss2/datyl/lib/datyl/streams.rb', line 318</span>
 
 <span class='def def kw'>def</span> <span class='streams identifier id'>streams</span>
   <span class='@streams ivar id'>@streams</span>
@@ -397,14 +408,14 @@ Returns the value of attribute streams
       <pre class="lines">
 
 
-299
-300
-301
-302
-303</pre>
+326
+327
+328
+329
+330</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File '/Users/fischer/WorkProjects/daitss2/datyl/lib/datyl/streams.rb', line 299</span>
+      <pre class="code"><span class="info file"># File '/Users/fischer/WorkProjects/daitss2/datyl/lib/datyl/streams.rb', line 326</span>
 
 <span class='def def kw'>def</span> <span class='each identifier id'>each</span>
   <span class='while while kw'>while</span> <span class='not not kw'>not</span> <span class='eos? fid id'>eos?</span>
@@ -431,13 +442,14 @@ Returns the value of attribute streams
   </div>
 </div>
 <div class="tags">
-  <h3>Returns:</h3>
+  
+<h3>Returns:</h3>
 <ul class="return">
   
     <li>
       
-        <span class='type'>(<tt>Boolean</tt>)</span>
       
+        <span class='type'>(<tt>Boolean</tt>)</span>
       
       
       
@@ -451,15 +463,15 @@ Returns the value of attribute streams
       <pre class="lines">
 
 
-315
-316
-317</pre>
+342
+343
+344</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File '/Users/fischer/WorkProjects/daitss2/datyl/lib/datyl/streams.rb', line 315</span>
+      <pre class="code"><span class="info file"># File '/Users/fischer/WorkProjects/daitss2/datyl/lib/datyl/streams.rb', line 342</span>
 
 <span class='def def kw'>def</span> <span class='eos? fid id'>eos?</span>
-  <span class='@first_stream ivar id'>@first_stream</span><span class='dot token'>.</span><span class='eos? fid id'>eos?</span> <span class='and and kw'>and</span>  <span class='@second_stream ivar id'>@second_stream</span><span class='dot token'>.</span><span class='eos? fid id'>eos?</span>
+  <span class='@first_stream ivar id'>@first_stream</span><span class='dot token'>.</span><span class='eos? fid id'>eos?</span> <span class='and and kw'>and</span> <span class='@second_stream ivar id'>@second_stream</span><span class='dot token'>.</span><span class='eos? fid id'>eos?</span>
 <span class='end end kw'>end</span>
 </pre>
     </td>
@@ -480,22 +492,22 @@ Returns the value of attribute streams
       <pre class="lines">
 
 
-319
-320
-321
-322
-323
-324
-325
-326
-327
-328
-329
-330
-331</pre>
+346
+347
+348
+349
+350
+351
+352
+353
+354
+355
+356
+357
+358</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File '/Users/fischer/WorkProjects/daitss2/datyl/lib/datyl/streams.rb', line 319</span>
+      <pre class="code"><span class="info file"># File '/Users/fischer/WorkProjects/daitss2/datyl/lib/datyl/streams.rb', line 346</span>
 
 <span class='def def kw'>def</span> <span class='get identifier id'>get</span>
   <span class='return return kw'>return</span> <span class='if if_mod kw'>if</span> <span class='eos? fid id'>eos?</span>
@@ -529,14 +541,14 @@ Returns the value of attribute streams
       <pre class="lines">
 
 
-309
-310
-311
-312
-313</pre>
+336
+337
+338
+339
+340</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File '/Users/fischer/WorkProjects/daitss2/datyl/lib/datyl/streams.rb', line 309</span>
+      <pre class="code"><span class="info file"># File '/Users/fischer/WorkProjects/daitss2/datyl/lib/datyl/streams.rb', line 336</span>
 
 <span class='def def kw'>def</span> <span class='rewind identifier id'>rewind</span>
   <span class='@first_stream ivar id'>@first_stream</span><span class='dot token'>.</span><span class='rewind identifier id'>rewind</span>
@@ -562,12 +574,12 @@ Returns the value of attribute streams
       <pre class="lines">
 
 
-305
-306
-307</pre>
+332
+333
+334</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File '/Users/fischer/WorkProjects/daitss2/datyl/lib/datyl/streams.rb', line 305</span>
+      <pre class="code"><span class="info file"># File '/Users/fischer/WorkProjects/daitss2/datyl/lib/datyl/streams.rb', line 332</span>
 
 <span class='def def kw'>def</span> <span class='to_s identifier id'>to_s</span>
   <span class='dstring node'>&quot;#&lt;#{self.class} comparing stream #{@first_stream} with #{@second_stream}&quot;</span>
@@ -583,9 +595,9 @@ Returns the value of attribute streams
 </div>
     
     <div id="footer">
-  Generated on Fri Aug  5 19:11:51 2011 by 
+  Generated on Mon Nov 21 11:33:16 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.6.0 (ruby-1.8.7).
+  0.7.3 (ruby-1.8.7).
 </div>
 
   </body>

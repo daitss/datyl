@@ -2,17 +2,27 @@
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
-    <meta name="Content-Type" content="text/html; charset=utf-8" />
-<title>Class: Streams::FoldedStream</title>
-<link rel="stylesheet" href="../css/style.css" type="text/css" media="screen" charset="utf-8" />
-<link rel="stylesheet" href="../css/common.css" type="text/css" media="screen" charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Class: Streams::FoldedStream
+  
+    &mdash; datyl: daitss utilities
+  
+</title>
+
+  <link rel="stylesheet" href="../css/style.css" type="text/css" media="screen" charset="utf-8" />
+
+  <link rel="stylesheet" href="../css/common.css" type="text/css" media="screen" charset="utf-8" />
 
 <script type="text/javascript" charset="utf-8">
   relpath = '..';
   if (relpath != '') relpath += '/';
 </script>
-<script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
-<script type="text/javascript" charset="utf-8" src="../js/app.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../js/app.js"></script>
+
 
   </head>
   <body>
@@ -33,11 +43,14 @@
 </div>
 
       <div id="search">
-  <a id="class_list_link" href="#">Class List</a>
-  <a id="method_list_link" href="#">Method List</a>
-  <a id ="file_list_link" href="#">File List</a>
+  
+    <a id="class_list_link" href="#">Class List</a>
+  
+    <a id="method_list_link" href="#">Method List</a>
+  
+    <a id="file_list_link" href="#">File List</a>
+  
 </div>
-
       <div class="clear"></div>
     </div>
     
@@ -83,23 +96,14 @@
 </dl>
 <div class="clear"></div>
 
-<h2>Overview</h2><div class="docstring">
-  <div class="discussion">
-    <p>
-FoldedStream is initialized from stream, returning a stream that has folded
-the values for identical keys together in an array. Thus the values for a
-FoldedStream are always an array, possibly of mixed arity. As for all
-streams, the keys must be sorted.
-</p>
 
-
-  </div>
-</div>
-<div class="tags">
-  
-</div>
 
   
+  
+  
+  
+
+
   
   
   
@@ -151,9 +155,9 @@ streams, the keys must be sorted.
   
 
   
-    <span class="summary_desc"><div class='inline'><p>
-A new instance of FoldedStream.
-</p>
+    <span class="summary_desc"><div class='inline'>
+<p>A FoldedStream is initialized from an existing stream, returning a stream
+that has folded the values for identical keys together in an array.</p>
 </div></span>
   
 </li>
@@ -234,7 +238,7 @@ A new instance of FoldedStream.
   
   
   <h3 class="inherited">Methods included from <span class='object_link'><a href="../CommonStreamMethods.html" title="CommonStreamMethods (module)">CommonStreamMethods</a></span></h3>
-  <p class="inherited"><span class='object_link'><a href="../CommonStreamMethods.html#%3C%3D%3E-instance_method" title="CommonStreamMethods#<=> (method)">#<=></a></span>, <span class='object_link'><a href="../CommonStreamMethods.html#_passes_filters-instance_method" title="CommonStreamMethods#_passes_filters (method)">#_passes_filters</a></span>, <span class='object_link'><a href="../CommonStreamMethods.html#each-instance_method" title="CommonStreamMethods#each (method)">#each</a></span>, <span class='object_link'><a href="../CommonStreamMethods.html#filters-instance_method" title="CommonStreamMethods#filters (method)">#filters</a></span>, <span class='object_link'><a href="../CommonStreamMethods.html#get-instance_method" title="CommonStreamMethods#get (method)">#get</a></span>, <span class='object_link'><a href="../CommonStreamMethods.html#unget-instance_method" title="CommonStreamMethods#unget (method)">#unget</a></span>, <span class='object_link'><a href="../CommonStreamMethods.html#ungetting%3F-instance_method" title="CommonStreamMethods#ungetting? (method)">#ungetting?</a></span></p>
+  <p class="inherited"><span class='object_link'><a href="../CommonStreamMethods.html#%3C%3D%3E-instance_method" title="CommonStreamMethods#&lt;=&gt; (method)">#<=></a></span>, <span class='object_link'><a href="../CommonStreamMethods.html#_passes_filters-instance_method" title="CommonStreamMethods#_passes_filters (method)">#_passes_filters</a></span>, <span class='object_link'><a href="../CommonStreamMethods.html#each-instance_method" title="CommonStreamMethods#each (method)">#each</a></span>, <span class='object_link'><a href="../CommonStreamMethods.html#filters-instance_method" title="CommonStreamMethods#filters (method)">#filters</a></span>, <span class='object_link'><a href="../CommonStreamMethods.html#get-instance_method" title="CommonStreamMethods#get (method)">#get</a></span>, <span class='object_link'><a href="../CommonStreamMethods.html#unget-instance_method" title="CommonStreamMethods#unget (method)">#unget</a></span>, <span class='object_link'><a href="../CommonStreamMethods.html#ungetting%3F-instance_method" title="CommonStreamMethods#ungetting? (method)">#ungetting?</a></span></p>
 <div id="constructor_details" class="method_details_list">
   <h2>Constructor Details</h2>
   
@@ -247,27 +251,30 @@ A new instance of FoldedStream.
   
 </p><div class="docstring">
   <div class="discussion">
-    <p>
-A new instance of FoldedStream
-</p>
+    
+<p>A FoldedStream is initialized from an existing stream, returning a stream
+that has folded the values for identical keys together in an array.  Thus
+the values for a FoldedStream are always an array, possibly of mixed arity.
+As for all streams, the keys, strings, must be sorted.</p>
 
 
   </div>
 </div>
 <div class="tags">
   
+
 </div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-180
-181
-182</pre>
+207
+208
+209</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File '/Users/fischer/WorkProjects/daitss2/datyl/lib/datyl/streams.rb', line 180</span>
+      <pre class="code"><span class="info file"># File '/Users/fischer/WorkProjects/daitss2/datyl/lib/datyl/streams.rb', line 207</span>
 
 <span class='def def kw'>def</span> <span class='initialize identifier id'>initialize</span> <span class='stream identifier id'>stream</span>
   <span class='@stream ivar id'>@stream</span>  <span class='assign token'>=</span> <span class='stream identifier id'>stream</span>
@@ -299,13 +306,14 @@ A new instance of FoldedStream
   </div>
 </div>
 <div class="tags">
-  <h3>Returns:</h3>
+  
+<h3>Returns:</h3>
 <ul class="return">
   
     <li>
       
-        <span class='type'>(<tt>Boolean</tt>)</span>
       
+        <span class='type'>(<tt>Boolean</tt>)</span>
       
       
       
@@ -319,12 +327,12 @@ A new instance of FoldedStream
       <pre class="lines">
 
 
-188
-189
-190</pre>
+215
+216
+217</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File '/Users/fischer/WorkProjects/daitss2/datyl/lib/datyl/streams.rb', line 188</span>
+      <pre class="code"><span class="info file"># File '/Users/fischer/WorkProjects/daitss2/datyl/lib/datyl/streams.rb', line 215</span>
 
 <span class='def def kw'>def</span> <span class='eos? fid id'>eos?</span>
   <span class='@stream ivar id'>@stream</span><span class='dot token'>.</span><span class='eos? fid id'>eos?</span>
@@ -348,28 +356,28 @@ A new instance of FoldedStream
       <pre class="lines">
 
 
-196
-197
-198
-199
-200
-201
-202
-203
-204
-205
-206
-207
-208
-209
-210
-211
-212
-213
-214</pre>
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File '/Users/fischer/WorkProjects/daitss2/datyl/lib/datyl/streams.rb', line 196</span>
+      <pre class="code"><span class="info file"># File '/Users/fischer/WorkProjects/daitss2/datyl/lib/datyl/streams.rb', line 223</span>
 
 <span class='def def kw'>def</span> <span class='read identifier id'>read</span>
   <span class='return return kw'>return</span> <span class='unless unless_mod kw'>unless</span> <span class='upcoming identifier id'>upcoming</span> <span class='assign token'>=</span> <span class='@stream ivar id'>@stream</span><span class='dot token'>.</span><span class='get identifier id'>get</span>
@@ -409,12 +417,12 @@ A new instance of FoldedStream
       <pre class="lines">
 
 
-192
-193
-194</pre>
+219
+220
+221</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File '/Users/fischer/WorkProjects/daitss2/datyl/lib/datyl/streams.rb', line 192</span>
+      <pre class="code"><span class="info file"># File '/Users/fischer/WorkProjects/daitss2/datyl/lib/datyl/streams.rb', line 219</span>
 
 <span class='def def kw'>def</span> <span class='rewind identifier id'>rewind</span>
   <span class='@stream ivar id'>@stream</span><span class='dot token'>.</span><span class='rewind identifier id'>rewind</span>
@@ -438,12 +446,12 @@ A new instance of FoldedStream
       <pre class="lines">
 
 
-184
-185
-186</pre>
+211
+212
+213</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File '/Users/fischer/WorkProjects/daitss2/datyl/lib/datyl/streams.rb', line 184</span>
+      <pre class="code"><span class="info file"># File '/Users/fischer/WorkProjects/daitss2/datyl/lib/datyl/streams.rb', line 211</span>
 
 <span class='def def kw'>def</span> <span class='to_s identifier id'>to_s</span>
   <span class='dstring node'>&quot;#&lt;#{self.class} folding #{@stream}&gt;&quot;</span>
@@ -459,9 +467,9 @@ A new instance of FoldedStream
 </div>
     
     <div id="footer">
-  Generated on Fri Aug  5 19:11:51 2011 by 
+  Generated on Mon Nov 21 11:33:17 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.6.0 (ruby-1.8.7).
+  0.7.3 (ruby-1.8.7).
 </div>
 
   </body>

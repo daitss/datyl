@@ -2,17 +2,27 @@
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
-    <meta name="Content-Type" content="text/html; charset=utf-8" />
-<title>Class: Reporter</title>
-<link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
-<link rel="stylesheet" href="css/common.css" type="text/css" media="screen" charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Class: Datyl::Reporter
+  
+    &mdash; datyl: daitss utilities
+  
+</title>
+
+  <link rel="stylesheet" href="../css/style.css" type="text/css" media="screen" charset="utf-8" />
+
+  <link rel="stylesheet" href="../css/common.css" type="text/css" media="screen" charset="utf-8" />
 
 <script type="text/javascript" charset="utf-8">
-  relpath = '';
+  relpath = '..';
   if (relpath != '') relpath += '/';
 </script>
-<script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
-<script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../js/app.js"></script>
+
 
   </head>
   <body>
@@ -23,9 +33,9 @@
     <div id="header">
       <div id="menu">
   
-    <a href="_index.html">Index (R)</a> &raquo; 
-    
-    
+    <a href="../_index.html">Index (R)</a> &raquo; 
+    <span class='title'><span class='object_link'><a href="../Datyl.html" title="Datyl (module)">Datyl</a></span></span>
+     &raquo; 
     <span class="title">Reporter</span>
   
   
@@ -33,17 +43,20 @@
 </div>
 
       <div id="search">
-  <a id="class_list_link" href="#">Class List</a>
-  <a id="method_list_link" href="#">Method List</a>
-  <a id ="file_list_link" href="#">File List</a>
+  
+    <a id="class_list_link" href="#">Class List</a>
+  
+    <a id="method_list_link" href="#">Method List</a>
+  
+    <a id="file_list_link" href="#">File List</a>
+  
 </div>
-
       <div class="clear"></div>
     </div>
     
     <iframe id="search_frame"></iframe>
     
-    <div id="content"><h1>Class: Reporter
+    <div id="content"><h1>Class: Datyl::Reporter
   
   
   
@@ -58,7 +71,7 @@
         <ul class="fullTree">
           <li>Object</li>
           
-            <li class="next">Reporter</li>
+            <li class="next">Datyl::Reporter</li>
           
         </ul>
         <a href="#" class="inheritanceTree">show all</a>
@@ -81,45 +94,44 @@
 
 <h2>Overview</h2><div class="docstring">
   <div class="discussion">
-    <p>
-This class combines logging and an abbreviated, written report. The Logger
+    
+<p>This class combines logging and an abbreviated, written report. The Logger
 system is assumed to have been initialized (logging will be a no-op
-otherwise).  
-</p>
-<p>
-Create a reporter object by initializing with a Title and an optional
-Subtitle. Example:
-</p>
-<pre class="code">
-  <span class='rep identifier id'>rep</span> <span class='assign token'>=</span> <span class='Reporter constant id'>Reporter</span><span class='dot token'>.</span><span class='new identifier id'>new</span> <span class='string val'>'Important Report'</span><span class='comma token'>,</span> <span class='string val'>'This could be very important'</span>
+otherwise).</p>
 
-  <span class='rep identifier id'>rep</span><span class='dot token'>.</span><span class='info identifier id'>info</span> <span class='string val'>'This is a test.'</span>      <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='Logs constant id'>Logs</span> <span class='an identifier id'>an</span> <span class='info identifier id'>info</span><span class='minus op'>-</span><span class='level identifier id'>level</span> <span class='message identifier id'>message</span> <span class='string val'>'Important Report: This is a test.'</span>
-  <span class='rep identifier id'>rep</span><span class='dot token'>.</span><span class='warn identifier id'>warn</span> <span class='string val'>'This is a warning.'</span>   <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='Logs constant id'>Logs</span> <span class='an identifier id'>an</span> <span class='warning identifier id'>warning</span><span class='minus op'>-</span><span class='level identifier id'>level</span> <span class='message identifier id'>message</span> <span class='string val'>'Important Report: This is a warning.'</span>
-  <span class='rep identifier id'>rep</span><span class='dot token'>.</span><span class='err identifier id'>err</span>  <span class='string val'>'This is an error.'</span>    <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='Logs constant id'>Logs</span> <span class='an identifier id'>an</span> <span class='error identifier id'>error</span><span class='minus op'>-</span><span class='level identifier id'>level</span> <span class='message identifier id'>message</span> <span class='string val'>'Important Report: This is an error.'</span>
+<p>Create a reporter object by initializing with a Title and an optional
+Subtitle. Example:</p>
 
-  <span class='rep identifier id'>rep</span><span class='dot token'>.</span><span class='write identifier id'>write</span> <span class='STDERR constant id'>STDERR</span>   <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='Produces constant id'>Produces</span> <span class='on identifier id'>on</span> <span class='STDERR constant id'>STDERR</span><span class='colon op'>:</span>
+<pre class="code"><span class='rep identifier id'>rep</span> <span class='assign token'>=</span> <span class='Reporter constant id'>Reporter</span><span class='dot token'>.</span><span class='new identifier id'>new</span> <span class='string val'>'Important Report'</span><span class='comma token'>,</span> <span class='string val'>'This could be very important'</span>
 
-                        <span class='Important constant id'>Important</span> <span class='Report constant id'>Report</span><span class='colon op'>:</span> <span class='This constant id'>This</span> <span class='could identifier id'>could</span> <span class='be identifier id'>be</span> <span class='very identifier id'>very</span> <span class='important identifier id'>important</span>
-                        <span class='eqq op'>===</span><span class='eqq op'>===</span>                                                                 <span class='This constant id'>This</span> <span class='is identifier id'>is</span> <span class='a identifier id'>a</span> <span class='test identifier id'>test</span><span class='dot token'>.</span>
-                        <span class='This constant id'>This</span> <span class='is identifier id'>is</span> <span class='a identifier id'>a</span> <span class='warning identifier id'>warning</span><span class='dot token'>.</span>
-                        <span class='This constant id'>This</span> <span class='is identifier id'>is</span> <span class='an identifier id'>an</span> <span class='error identifier id'>error</span><span class='dot token'>.</span>
+<span class='rep identifier id'>rep</span><span class='dot token'>.</span><span class='info identifier id'>info</span> <span class='string val'>'This is a test.'</span>      <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='Logs constant id'>Logs</span> <span class='an identifier id'>an</span> <span class='info identifier id'>info</span><span class='minus op'>-</span><span class='level identifier id'>level</span> <span class='message identifier id'>message</span><span class='colon op'>:</span>     <span class='string val'>'Important Report: This is a test.'</span>
+<span class='rep identifier id'>rep</span><span class='dot token'>.</span><span class='warn identifier id'>warn</span> <span class='string val'>'This is a warning.'</span>   <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='Logs constant id'>Logs</span> <span class='an identifier id'>an</span> <span class='warning identifier id'>warning</span><span class='minus op'>-</span><span class='level identifier id'>level</span> <span class='message identifier id'>message</span><span class='colon op'>:</span>  <span class='string val'>'Important Report: This is a warning.'</span>
+<span class='rep identifier id'>rep</span><span class='dot token'>.</span><span class='err identifier id'>err</span>  <span class='string val'>'This is an error.'</span>    <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='Logs constant id'>Logs</span> <span class='an identifier id'>an</span> <span class='error identifier id'>error</span><span class='minus op'>-</span><span class='level identifier id'>level</span> <span class='message identifier id'>message</span><span class='colon op'>:</span>    <span class='string val'>'Important Report: This is an error.'</span>
+
+<span class='rep identifier id'>rep</span><span class='dot token'>.</span><span class='write identifier id'>write</span> <span class='STDERR constant id'>STDERR</span>   <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='Produces constant id'>Produces</span> <span class='on identifier id'>on</span> <span class='STDERR constant id'>STDERR</span><span class='colon op'>:</span>
+
+                      <span class='Important constant id'>Important</span> <span class='Report constant id'>Report</span><span class='colon op'>:</span> <span class='This constant id'>This</span> <span class='could identifier id'>could</span> <span class='be identifier id'>be</span> <span class='very identifier id'>very</span> <span class='important identifier id'>important</span>
+                      <span class='eqq op'>===</span><span class='eqq op'>===</span><span class='eqq op'>===</span><span class='eqq op'>===</span><span class='eqq op'>===</span><span class='eqq op'>===</span><span class='eqq op'>===</span><span class='eqq op'>===</span><span class='eqq op'>===</span><span class='eqq op'>===</span><span class='eqq op'>===</span><span class='eqq op'>===</span><span class='eqq op'>===</span><span class='eqq op'>===</span><span class='eqq op'>===</span><span class='assign token'>=</span>
+                      <span class='This constant id'>This</span> <span class='is identifier id'>is</span> <span class='a identifier id'>a</span> <span class='test identifier id'>test</span><span class='dot token'>.</span>
+                      <span class='This constant id'>This</span> <span class='is identifier id'>is</span> <span class='a identifier id'>a</span> <span class='warning identifier id'>warning</span><span class='dot token'>.</span>
+                      <span class='This constant id'>This</span> <span class='is identifier id'>is</span> <span class='an identifier id'>an</span> <span class='error identifier id'>error</span><span class='dot token'>.</span>
 </pre>
-<p>
-Note: the subtitle is only included in the written report;
+
+<p>Note: the subtitle is only included in the written report;
 info/warning/errors are distinguished only in the logs.  The Title is
 included for each logged line: keep it short - use the Subtitle to expand
 the heading for the written reports.  Set the class attribute
 Reporter.max_lines_to_write to limit the number of lines written in any
 particular report; it will print the first and last lines of the report if
 the number of lines goes over that value (intially, 1000 lines).  A blank
-line is added after the text of the written report.
-</p>
+line is added after the text of the written report.</p>
 
 
   </div>
 </div>
 <div class="tags">
   
+
 </div>
   <h2>Constant Summary</h2>
   
@@ -128,19 +140,19 @@ line is added after the text of the written report.
         <dt id="max_lines-classvariable" class="">@@max_lines =
           <div class="docstring">
   <div class="discussion">
-    <p>
-will only write this many lines of text - first half,
-&#8217;&#8230;&#8217;, second half.
-</p>
+    
+<p>will only write this many lines of text - first half, ‘…’, second
+half.</p>
 
 
   </div>
 </div>
 <div class="tags">
   
+
 </div>
         </dt>
-        <dd><pre class="code"><span class='integer val'>5000</span>
+        <dd><pre class="code"><span class='integer val'>2000</span>
 </pre></dd>
       
     </dl>
@@ -169,9 +181,8 @@ will only write this many lines of text - first half,
   
 
   
-    <span class="summary_desc"><div class='inline'><p>
-Returns the value of attribute counter.
-</p>
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the value of attribute counter.</p>
 </div></span>
   
 </li>
@@ -196,15 +207,16 @@ Returns the value of attribute counter.
   
 
   
-    <span class="summary_desc"><div class='inline'><p>
-Returns the value of attribute title.
-</p>
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the value of attribute title.</p>
 </div></span>
   
 </li>
 
     
   </ul>
+
+
 
 
   
@@ -273,9 +285,9 @@ Returns the value of attribute title.
   
 
   
-    <span class="summary_desc"><div class='inline'><p>
-A class version of the above, for immediate gratification.
-</p>
+    <span class="summary_desc"><div class='inline'>
+<p>A class version of the above which is immediately written out - it’s a
+convenience routine.</p>
 </div></span>
   
 </li>
@@ -293,7 +305,7 @@ A class version of the above, for immediate gratification.
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#bottom_lines-instance_method" title="#bottom_lines (instance method)">- (Object) <strong>bottom_lines</strong> </a>
+      <a href="#_bottom_lines-instance_method" title="#_bottom_lines (instance method)">- (Object) <strong>_bottom_lines</strong> </a>
     
 
     
@@ -314,6 +326,51 @@ A class version of the above, for immediate gratification.
         <li class="public ">
   <span class="summary_signature">
     
+      <a href="#_top_lines-instance_method" title="#_top_lines (instance method)">- (Object) <strong>_top_lines</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#dolog-instance_method" title="#dolog (instance method)">- (Object) <strong>dolog</strong>(*strs) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Support for logging messages at various severity levels; slightly
+abbreviated data is recorded to a playback file.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
       <a href="#done-instance_method" title="#done (instance method)">- (Object) <strong>done</strong> </a>
     
 
@@ -327,11 +384,10 @@ A class version of the above, for immediate gratification.
   
 
   
-    <span class="summary_desc"><div class='inline'><p>
-for debugging - if you call &#8216;done&#8217; the report will add to the
-title its total runtime - from the creation time of the constructor to the
-point &#8216;done&#8217; was called.
-</p>
+    <span class="summary_desc"><div class='inline'>
+<p>for debugging - if you call ‘done’ the report will add to the title its
+total runtime - from the creation time of the constructor to the point
+‘done’ was called.</p>
 </div></span>
   
 </li>
@@ -353,7 +409,10 @@ point &#8216;done&#8217; was called.
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Cycle through everything that’s been written, yielding a line; if the
+report is large, the <b>middle</b> of the report is truncated.</p>
+</div></span>
   
 </li>
 
@@ -361,7 +420,7 @@ point &#8216;done&#8217; was called.
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#err-instance_method" title="#err (instance method)">- (Object) <strong>err</strong>(str = nil) </a>
+      <a href="#err-instance_method" title="#err (instance method)">- (Object) <strong>err</strong>(*strs) </a>
     
 
     
@@ -374,7 +433,9 @@ point &#8216;done&#8217; was called.
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Log messages using the ERR severity.</p>
+</div></span>
   
 </li>
 
@@ -382,7 +443,7 @@ point &#8216;done&#8217; was called.
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#info-instance_method" title="#info (instance method)">- (Object) <strong>info</strong>(str = nil) </a>
+      <a href="#info-instance_method" title="#info (instance method)">- (Object) <strong>info</strong>(*strs) </a>
     
 
     
@@ -395,7 +456,9 @@ point &#8216;done&#8217; was called.
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Log messages using the INFO severity.</p>
+</div></span>
   
 </li>
 
@@ -418,9 +481,8 @@ point &#8216;done&#8217; was called.
   
 
   
-    <span class="summary_desc"><div class='inline'><p>
-A new instance of Reporter.
-</p>
+    <span class="summary_desc"><div class='inline'>
+<p>A new instance of Reporter.</p>
 </div></span>
   
 </li>
@@ -442,7 +504,10 @@ A new instance of Reporter.
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>interesting? is true if anything has been reported - some reports could be
+empty.</p>
+</div></span>
   
 </li>
 
@@ -471,7 +536,7 @@ A new instance of Reporter.
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#top_lines-instance_method" title="#top_lines (instance method)">- (Object) <strong>top_lines</strong> </a>
+      <a href="#warn-instance_method" title="#warn (instance method)">- (Object) <strong>warn</strong>(*strs) </a>
     
 
     
@@ -484,28 +549,9 @@ A new instance of Reporter.
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#warn-instance_method" title="#warn (instance method)">- (Object) <strong>warn</strong>(str = nil) </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Log messages using the WARN severity.</p>
+</div></span>
   
 </li>
 
@@ -526,7 +572,9 @@ A new instance of Reporter.
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Write the report to the provided IO object, STDOUT by default.</p>
+</div></span>
   
 </li>
 
@@ -540,30 +588,27 @@ A new instance of Reporter.
     <div class="method_details first">
   <p class="signature first" id="initialize-instance_method">
   
-    - (<tt><span class='object_link'><a href="" title="Reporter (class)">Reporter</a></span></tt>) <strong>initialize</strong>(title, sub = nil) 
+    - (<tt><span class='object_link'><a href="" title="Datyl::Reporter (class)">Reporter</a></span></tt>) <strong>initialize</strong>(title, sub = nil) 
   
 
   
 </p><div class="docstring">
   <div class="discussion">
-    <p>
-A new instance of Reporter
-</p>
+    
+<p>A new instance of Reporter</p>
 
 
   </div>
 </div>
 <div class="tags">
   
+
 </div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-42
-43
-44
 45
 46
 47
@@ -571,10 +616,13 @@ A new instance of Reporter
 49
 50
 51
-52</pre>
+52
+53
+54
+55</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File '/Users/fischer/WorkProjects/daitss2/datyl/lib/datyl/reporter.rb', line 42</span>
+      <pre class="code"><span class="info file"># File '/Users/fischer/WorkProjects/daitss2/datyl/lib/datyl/reporter.rb', line 45</span>
 
 <span class='def def kw'>def</span> <span class='initialize identifier id'>initialize</span> <span class='title identifier id'>title</span><span class='comma token'>,</span> <span class='sub identifier id'>sub</span> <span class='assign token'>=</span> <span class='nil nil kw'>nil</span>
   <span class='@start ivar id'>@start</span>     <span class='assign token'>=</span> <span class='Time constant id'>Time</span><span class='dot token'>.</span><span class='now identifier id'>now</span>
@@ -610,27 +658,27 @@ A new instance of Reporter
   
 </p><div class="docstring">
   <div class="discussion">
-    <p>
-Returns the value of attribute counter
-</p>
+    
+<p>Returns the value of attribute counter</p>
 
 
   </div>
 </div>
 <div class="tags">
   
+
 </div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-40
-41
-42</pre>
+43
+44
+45</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File '/Users/fischer/WorkProjects/daitss2/datyl/lib/datyl/reporter.rb', line 40</span>
+      <pre class="code"><span class="info file"># File '/Users/fischer/WorkProjects/daitss2/datyl/lib/datyl/reporter.rb', line 43</span>
 
 <span class='def def kw'>def</span> <span class='counter identifier id'>counter</span>
   <span class='@counter ivar id'>@counter</span>
@@ -653,27 +701,27 @@ Returns the value of attribute counter
   
 </p><div class="docstring">
   <div class="discussion">
-    <p>
-Returns the value of attribute title
-</p>
+    
+<p>Returns the value of attribute title</p>
 
 
   </div>
 </div>
 <div class="tags">
   
+
 </div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-40
-41
-42</pre>
+43
+44
+45</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File '/Users/fischer/WorkProjects/daitss2/datyl/lib/datyl/reporter.rb', line 40</span>
+      <pre class="code"><span class="info file"># File '/Users/fischer/WorkProjects/daitss2/datyl/lib/datyl/reporter.rb', line 43</span>
 
 <span class='def def kw'>def</span> <span class='title identifier id'>title</span>
   <span class='@title ivar id'>@title</span>
@@ -704,12 +752,12 @@ Returns the value of attribute title
       <pre class="lines">
 
 
-54
-55
-56</pre>
+57
+58
+59</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File '/Users/fischer/WorkProjects/daitss2/datyl/lib/datyl/reporter.rb', line 54</span>
+      <pre class="code"><span class="info file"># File '/Users/fischer/WorkProjects/daitss2/datyl/lib/datyl/reporter.rb', line 57</span>
 
 <span class='def def kw'>def</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='max_lines_to_write identifier id'>max_lines_to_write</span>
   <span class='@@max_lines ivar id'>@@max_lines</span>
@@ -733,12 +781,12 @@ Returns the value of attribute title
       <pre class="lines">
 
 
-58
-59
-60</pre>
+61
+62
+63</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File '/Users/fischer/WorkProjects/daitss2/datyl/lib/datyl/reporter.rb', line 58</span>
+      <pre class="code"><span class="info file"># File '/Users/fischer/WorkProjects/daitss2/datyl/lib/datyl/reporter.rb', line 61</span>
 
 <span class='def def kw'>def</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='max_lines_to_write identifier id'>max_lines_to_write</span><span class='assign token'>=</span> <span class='num identifier id'>num</span>
   <span class='@@max_lines ivar id'>@@max_lines</span> <span class='assign token'>=</span> <span class='num identifier id'>num</span>
@@ -758,28 +806,29 @@ Returns the value of attribute title
   
 </p><div class="docstring">
   <div class="discussion">
-    <p>
-A class version of the above, for immediate gratification
-</p>
+    
+<p>A class version of the above which is immediately written out - it’s a
+convenience routine.</p>
 
 
   </div>
 </div>
 <div class="tags">
   
+
 </div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-146
-147
-148
-149</pre>
+177
+178
+179
+180</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File '/Users/fischer/WorkProjects/daitss2/datyl/lib/datyl/reporter.rb', line 146</span>
+      <pre class="code"><span class="info file"># File '/Users/fischer/WorkProjects/daitss2/datyl/lib/datyl/reporter.rb', line 177</span>
 
 <span class='def def kw'>def</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='note identifier id'>note</span> <span class='message identifier id'>message</span><span class='comma token'>,</span> <span class='io identifier id'>io</span> <span class='assign token'>=</span> <span class='STDOUT constant id'>STDOUT</span>
   <span class='Logger constant id'>Logger</span><span class='dot token'>.</span><span class='info identifier id'>info</span> <span class='message identifier id'>message</span>
@@ -798,9 +847,9 @@ A class version of the above, for immediate gratification
     
     
       <div class="method_details first">
-  <p class="signature first" id="bottom_lines-instance_method">
+  <p class="signature first" id="_bottom_lines-instance_method">
   
-    - (<tt>Object</tt>) <strong>bottom_lines</strong> 
+    - (<tt>Object</tt>) <strong>_bottom_lines</strong> 
   
 
   
@@ -810,15 +859,100 @@ A class version of the above, for immediate gratification
       <pre class="lines">
 
 
-101
-102
-103</pre>
+120
+121
+122</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File '/Users/fischer/WorkProjects/daitss2/datyl/lib/datyl/reporter.rb', line 101</span>
+      <pre class="code"><span class="info file"># File '/Users/fischer/WorkProjects/daitss2/datyl/lib/datyl/reporter.rb', line 120</span>
 
-<span class='def def kw'>def</span> <span class='bottom_lines identifier id'>bottom_lines</span>
+<span class='def def kw'>def</span> <span class='_bottom_lines identifier id'>_bottom_lines</span>
   <span class='@@max_lines ivar id'>@@max_lines</span> <span class='div op'>/</span> <span class='integer val'>2</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="_top_lines-instance_method">
+  
+    - (<tt>Object</tt>) <strong>_top_lines</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+116
+117
+118</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/Users/fischer/WorkProjects/daitss2/datyl/lib/datyl/reporter.rb', line 116</span>
+
+<span class='def def kw'>def</span> <span class='_top_lines identifier id'>_top_lines</span>
+  <span class='@@max_lines ivar id'>@@max_lines</span> <span class='div op'>/</span> <span class='integer val'>2</span> <span class='plus op'>+</span> <span class='lparen token'>(</span><span class='@@max_lines ivar id'>@@max_lines</span><span class='dot token'>.</span><span class='odd? fid id'>odd?</span> <span class='integer val'>? </span><span class='integer val'>1</span> <span class='colon op'>:</span> <span class='integer val'>0</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="dolog-instance_method">
+  
+    - (<tt>Object</tt>) <strong>dolog</strong>(*strs) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+<p>Support for logging messages at various severity levels; slightly
+abbreviated data is recorded to a playback file.  Called with no arguments,
+just insert a blank line the playback file.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/Users/fischer/WorkProjects/daitss2/datyl/lib/datyl/reporter.rb', line 76</span>
+
+<span class='def def kw'>def</span> <span class='dolog identifier id'>dolog</span> <span class='mult op'>*</span><span class='strs identifier id'>strs</span>
+  <span class='@counter ivar id'>@counter</span> <span class='opasgn op'>+=</span> <span class='integer val'>1</span>
+  
+  <span class='strs identifier id'>strs</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='str identifier id'>str</span><span class='bitor op'>|</span>
+    <span class='yield yield kw'>yield</span> <span class='@title ivar id'>@title</span> <span class='plus op'>+</span> <span class='string val'>': '</span> <span class='plus op'>+</span> <span class='str identifier id'>str</span> <span class='unless unless_mod kw'>unless</span> <span class='str identifier id'>str</span><span class='dot token'>.</span><span class='empty? fid id'>empty?</span>
+    <span class='@tempfile ivar id'>@tempfile</span><span class='dot token'>.</span><span class='puts identifier id'>puts</span> <span class='str identifier id'>str</span>
+  <span class='end end kw'>end</span>
+
+  <span class='@tempfile ivar id'>@tempfile</span><span class='dot token'>.</span><span class='puts identifier id'>puts</span><span class='lparen token'>(</span><span class='string val'>''</span><span class='rparen token'>)</span> <span class='if if_mod kw'>if</span> <span class='strs identifier id'>strs</span><span class='dot token'>.</span><span class='empty? fid id'>empty?</span>
 <span class='end end kw'>end</span>
 </pre>
     </td>
@@ -835,29 +969,29 @@ A class version of the above, for immediate gratification
   
 </p><div class="docstring">
   <div class="discussion">
-    <p>
-for debugging - if you call &#8216;done&#8217; the report will add to the
-title its total runtime - from the creation time of the constructor to the
-point &#8216;done&#8217; was called
-</p>
+    
+<p>for debugging - if you call ‘done’ the report will add to the title its
+total runtime - from the creation time of the constructor to the point
+‘done’ was called</p>
 
 
   </div>
 </div>
 <div class="tags">
   
+
 </div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-66
-67
-68</pre>
+69
+70
+71</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File '/Users/fischer/WorkProjects/daitss2/datyl/lib/datyl/reporter.rb', line 66</span>
+      <pre class="code"><span class="info file"># File '/Users/fischer/WorkProjects/daitss2/datyl/lib/datyl/reporter.rb', line 69</span>
 
 <span class='def def kw'>def</span> <span class='done identifier id'>done</span>
   <span class='@done ivar id'>@done</span> <span class='assign token'>=</span> <span class='Time constant id'>Time</span><span class='dot token'>.</span><span class='now identifier id'>now</span>
@@ -878,17 +1012,23 @@ point &#8216;done&#8217; was called
 </p><div class="docstring">
   <div class="discussion">
     
+<p>Cycle through everything that’s been written, yielding a line; if the
+report is large, the <b>middle</b> of the report is truncated. It’s meant
+to be used in email reports. Only a total @@max_lines is provided split
+equally from from the the begginning and the end.</p>
+
 
   </div>
 </div>
 <div class="tags">
-  <h3>Yields:</h3>
+  
+<h3>Yields:</h3>
 <ul class="yield">
   
     <li>
       
-        <span class='type'>(<tt>title</tt>)</span>
       
+        <span class='type'>(<tt>title</tt>)</span>
       
       
       
@@ -902,40 +1042,40 @@ point &#8216;done&#8217; was called
       <pre class="lines">
 
 
-105
-106
-107
-108
-109
-110
-111
-112
-113
-114
-115
-116
-117
-118
-119
-120
-121
-122
-123
-124
-125
-126
-127
-128
-129
 130
 131
 132
 133
 134
-135</pre>
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File '/Users/fischer/WorkProjects/daitss2/datyl/lib/datyl/reporter.rb', line 105</span>
+      <pre class="code"><span class="info file"># File '/Users/fischer/WorkProjects/daitss2/datyl/lib/datyl/reporter.rb', line 130</span>
 
 <span class='def def kw'>def</span> <span class='each identifier id'>each</span>
   <span class='title identifier id'>title</span> <span class='assign token'>=</span> <span class='@title ivar id'>@title</span> <span class='plus op'>+</span> <span class='lparen token'>(</span><span class='@subtitle ivar id'>@subtitle</span> <span class='question op'>?</span> <span class='dstring node'>&quot;: #{@subtitle}&quot;</span> <span class='colon op'>:</span> <span class='string val'>''</span><span class='rparen token'>)</span> <span class='plus op'>+</span>  <span class='lparen token'>(</span><span class='@done ivar id'>@done</span> <span class='question op'>?</span> <span class='sprintf identifier id'>sprintf</span><span class='lparen token'>(</span><span class='string val'>&quot; (%3.2f seconds)&quot;</span><span class='comma token'>,</span> <span class='@done ivar id'>@done</span> <span class='minus op'>-</span> <span class='@start ivar id'>@start</span><span class='rparen token'>)</span> <span class='colon op'>:</span> <span class='string val'>''</span><span class='rparen token'>)</span>
@@ -947,11 +1087,11 @@ point &#8216;done&#8217; was called
   <span class='if if kw'>if</span> <span class='@counter ivar id'>@counter</span> <span class='gt op'>&gt;</span> <span class='@@max_lines ivar id'>@@max_lines</span>
     <span class='yield yield kw'>yield</span> <span class='dstring node'>&quot;Note: #{@counter - @@max_lines} of #{@counter} lines were discarded - see the system log for the complete report.&quot;</span>
 
-    <span class='top_lines identifier id'>top_lines</span><span class='dot token'>.</span><span class='times identifier id'>times</span>  <span class='lbrace token'>{</span> <span class='yield yield kw'>yield</span> <span class='@tempfile ivar id'>@tempfile</span><span class='dot token'>.</span><span class='gets identifier id'>gets</span> <span class='rbrace token'>}</span>           <span class='comment val'># print first half</span>
+    <span class='_top_lines identifier id'>_top_lines</span><span class='dot token'>.</span><span class='times identifier id'>times</span>  <span class='lbrace token'>{</span> <span class='yield yield kw'>yield</span> <span class='@tempfile ivar id'>@tempfile</span><span class='dot token'>.</span><span class='gets identifier id'>gets</span> <span class='rbrace token'>}</span>           <span class='comment val'># print first half</span>
 
     <span class='@tempfile ivar id'>@tempfile</span><span class='dot token'>.</span><span class='rewind identifier id'>rewind</span>
 
-    <span class='lparen token'>(</span><span class='@counter ivar id'>@counter</span> <span class='minus op'>-</span> <span class='bottom_lines identifier id'>bottom_lines</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='times identifier id'>times</span> <span class='lbrace token'>{</span> <span class='@tempfile ivar id'>@tempfile</span><span class='dot token'>.</span><span class='gets identifier id'>gets</span> <span class='rbrace token'>}</span>  <span class='comment val'># discard middle</span>
+    <span class='lparen token'>(</span><span class='@counter ivar id'>@counter</span> <span class='minus op'>-</span> <span class='_bottom_lines identifier id'>_bottom_lines</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='times identifier id'>times</span> <span class='lbrace token'>{</span> <span class='@tempfile ivar id'>@tempfile</span><span class='dot token'>.</span><span class='gets identifier id'>gets</span> <span class='rbrace token'>}</span>  <span class='comment val'># discard middle</span>
 
     <span class='yield yield kw'>yield</span> <span class='string val'>&quot; ...&quot;</span>
 
@@ -977,29 +1117,36 @@ point &#8216;done&#8217; was called
       <div class="method_details ">
   <p class="signature " id="err-instance_method">
   
-    - (<tt>Object</tt>) <strong>err</strong>(str = nil) 
+    - (<tt>Object</tt>) <strong>err</strong>(*strs) 
   
 
   
-</p><table class="source_code">
+</p><div class="docstring">
+  <div class="discussion">
+    
+<p>Log messages using the ERR severity</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-83
-84
-85
-86
-87</pre>
+101
+102
+103</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File '/Users/fischer/WorkProjects/daitss2/datyl/lib/datyl/reporter.rb', line 83</span>
+      <pre class="code"><span class="info file"># File '/Users/fischer/WorkProjects/daitss2/datyl/lib/datyl/reporter.rb', line 101</span>
 
-<span class='def def kw'>def</span> <span class='err identifier id'>err</span> <span class='str identifier id'>str</span> <span class='assign token'>=</span> <span class='nil nil kw'>nil</span>
-  <span class='@counter ivar id'>@counter</span> <span class='opasgn op'>+=</span> <span class='integer val'>1</span>
-  <span class='Logger constant id'>Logger</span><span class='dot token'>.</span><span class='err identifier id'>err</span>  <span class='@title ivar id'>@title</span> <span class='plus op'>+</span> <span class='string val'>': '</span> <span class='plus op'>+</span> <span class='str identifier id'>str</span>  <span class='if if_mod kw'>if</span> <span class='str identifier id'>str</span>
-  <span class='@tempfile ivar id'>@tempfile</span><span class='dot token'>.</span><span class='puts identifier id'>puts</span><span class='lparen token'>(</span><span class='str identifier id'>str</span> <span class='integer val'>? </span><span class='str identifier id'>str</span> <span class='colon op'>:</span> <span class='string val'>''</span><span class='rparen token'>)</span>
+<span class='def def kw'>def</span> <span class='err identifier id'>err</span> <span class='mult op'>*</span><span class='strs identifier id'>strs</span>
+  <span class='dolog identifier id'>dolog</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='strs identifier id'>strs</span><span class='rparen token'>)</span> <span class='lbrace token'>{</span> <span class='bitor op'>|</span><span class='s identifier id'>s</span><span class='bitor op'>|</span> <span class='Logger constant id'>Logger</span><span class='dot token'>.</span><span class='err identifier id'>err</span> <span class='s identifier id'>s</span> <span class='rbrace token'>}</span>
 <span class='end end kw'>end</span>
 </pre>
     </td>
@@ -1010,29 +1157,36 @@ point &#8216;done&#8217; was called
       <div class="method_details ">
   <p class="signature " id="info-instance_method">
   
-    - (<tt>Object</tt>) <strong>info</strong>(str = nil) 
+    - (<tt>Object</tt>) <strong>info</strong>(*strs) 
   
 
   
-</p><table class="source_code">
+</p><div class="docstring">
+  <div class="discussion">
+    
+<p>Log messages using the INFO severity</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-71
-72
-73
-74
-75</pre>
+89
+90
+91</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File '/Users/fischer/WorkProjects/daitss2/datyl/lib/datyl/reporter.rb', line 71</span>
+      <pre class="code"><span class="info file"># File '/Users/fischer/WorkProjects/daitss2/datyl/lib/datyl/reporter.rb', line 89</span>
 
-<span class='def def kw'>def</span> <span class='info identifier id'>info</span> <span class='str identifier id'>str</span> <span class='assign token'>=</span> <span class='nil nil kw'>nil</span>
-  <span class='@counter ivar id'>@counter</span> <span class='opasgn op'>+=</span> <span class='integer val'>1</span>
-  <span class='Logger constant id'>Logger</span><span class='dot token'>.</span><span class='info identifier id'>info</span> <span class='@title ivar id'>@title</span> <span class='plus op'>+</span> <span class='string val'>': '</span> <span class='plus op'>+</span> <span class='str identifier id'>str</span>  <span class='if if_mod kw'>if</span> <span class='str identifier id'>str</span>
-  <span class='@tempfile ivar id'>@tempfile</span><span class='dot token'>.</span><span class='puts identifier id'>puts</span><span class='lparen token'>(</span><span class='str identifier id'>str</span> <span class='integer val'>? </span><span class='str identifier id'>str</span> <span class='colon op'>:</span> <span class='string val'>''</span><span class='rparen token'>)</span>
+<span class='def def kw'>def</span> <span class='info identifier id'>info</span> <span class='mult op'>*</span><span class='strs identifier id'>strs</span>
+  <span class='dolog identifier id'>dolog</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='strs identifier id'>strs</span><span class='rparen token'>)</span> <span class='lbrace token'>{</span> <span class='bitor op'>|</span><span class='s identifier id'>s</span><span class='bitor op'>|</span> <span class='Logger constant id'>Logger</span><span class='dot token'>.</span><span class='info identifier id'>info</span> <span class='s identifier id'>s</span> <span class='rbrace token'>}</span>
 <span class='end end kw'>end</span>
 </pre>
     </td>
@@ -1050,17 +1204,21 @@ point &#8216;done&#8217; was called
 </p><div class="docstring">
   <div class="discussion">
     
+<p>interesting? is true if anything has been reported - some reports could be
+empty</p>
+
 
   </div>
 </div>
 <div class="tags">
-  <h3>Returns:</h3>
+  
+<h3>Returns:</h3>
 <ul class="return">
   
     <li>
       
-        <span class='type'>(<tt>Boolean</tt>)</span>
       
+        <span class='type'>(<tt>Boolean</tt>)</span>
       
       
       
@@ -1074,12 +1232,12 @@ point &#8216;done&#8217; was called
       <pre class="lines">
 
 
-93
-94
-95</pre>
+112
+113
+114</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File '/Users/fischer/WorkProjects/daitss2/datyl/lib/datyl/reporter.rb', line 93</span>
+      <pre class="code"><span class="info file"># File '/Users/fischer/WorkProjects/daitss2/datyl/lib/datyl/reporter.rb', line 112</span>
 
 <span class='def def kw'>def</span> <span class='interesting? fid id'>interesting?</span>
   <span class='@counter ivar id'>@counter</span> <span class='gt op'>&gt;</span> <span class='integer val'>0</span>
@@ -1103,12 +1261,12 @@ point &#8216;done&#8217; was called
       <pre class="lines">
 
 
-89
-90
-91</pre>
+106
+107
+108</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File '/Users/fischer/WorkProjects/daitss2/datyl/lib/datyl/reporter.rb', line 89</span>
+      <pre class="code"><span class="info file"># File '/Users/fischer/WorkProjects/daitss2/datyl/lib/datyl/reporter.rb', line 106</span>
 
 <span class='def def kw'>def</span> <span class='rewind identifier id'>rewind</span>
   <span class='@tempfile ivar id'>@tempfile</span><span class='dot token'>.</span><span class='rewind identifier id'>rewind</span>
@@ -1120,60 +1278,38 @@ point &#8216;done&#8217; was called
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="top_lines-instance_method">
-  
-    - (<tt>Object</tt>) <strong>top_lines</strong> 
-  
-
-  
-</p><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-97
-98
-99</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File '/Users/fischer/WorkProjects/daitss2/datyl/lib/datyl/reporter.rb', line 97</span>
-
-<span class='def def kw'>def</span> <span class='top_lines identifier id'>top_lines</span>
-  <span class='@@max_lines ivar id'>@@max_lines</span> <span class='div op'>/</span> <span class='integer val'>2</span> <span class='plus op'>+</span> <span class='lparen token'>(</span><span class='@@max_lines ivar id'>@@max_lines</span><span class='dot token'>.</span><span class='odd? fid id'>odd?</span> <span class='integer val'>? </span><span class='integer val'>1</span> <span class='colon op'>:</span> <span class='integer val'>0</span><span class='rparen token'>)</span>
-<span class='end end kw'>end</span>
-</pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
   <p class="signature " id="warn-instance_method">
   
-    - (<tt>Object</tt>) <strong>warn</strong>(str = nil) 
+    - (<tt>Object</tt>) <strong>warn</strong>(*strs) 
   
 
   
-</p><table class="source_code">
+</p><div class="docstring">
+  <div class="discussion">
+    
+<p>Log messages using the WARN severity</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-77
-78
-79
-80
-81</pre>
+95
+96
+97</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File '/Users/fischer/WorkProjects/daitss2/datyl/lib/datyl/reporter.rb', line 77</span>
+      <pre class="code"><span class="info file"># File '/Users/fischer/WorkProjects/daitss2/datyl/lib/datyl/reporter.rb', line 95</span>
 
-<span class='def def kw'>def</span> <span class='warn identifier id'>warn</span> <span class='str identifier id'>str</span> <span class='assign token'>=</span> <span class='nil nil kw'>nil</span>
-  <span class='@counter ivar id'>@counter</span> <span class='opasgn op'>+=</span> <span class='integer val'>1</span>
-  <span class='Logger constant id'>Logger</span><span class='dot token'>.</span><span class='warn identifier id'>warn</span>  <span class='@title ivar id'>@title</span> <span class='plus op'>+</span> <span class='string val'>': '</span> <span class='plus op'>+</span> <span class='str identifier id'>str</span>  <span class='if if_mod kw'>if</span> <span class='str identifier id'>str</span>
-  <span class='@tempfile ivar id'>@tempfile</span><span class='dot token'>.</span><span class='puts identifier id'>puts</span><span class='lparen token'>(</span><span class='str identifier id'>str</span> <span class='integer val'>? </span><span class='str identifier id'>str</span> <span class='colon op'>:</span> <span class='string val'>''</span><span class='rparen token'>)</span>
+<span class='def def kw'>def</span> <span class='warn identifier id'>warn</span> <span class='mult op'>*</span><span class='strs identifier id'>strs</span>
+  <span class='dolog identifier id'>dolog</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='strs identifier id'>strs</span><span class='rparen token'>)</span> <span class='lbrace token'>{</span> <span class='bitor op'>|</span><span class='s identifier id'>s</span><span class='bitor op'>|</span> <span class='Logger constant id'>Logger</span><span class='dot token'>.</span><span class='warn identifier id'>warn</span> <span class='s identifier id'>s</span> <span class='rbrace token'>}</span>
 <span class='end end kw'>end</span>
 </pre>
     </td>
@@ -1188,20 +1324,33 @@ point &#8216;done&#8217; was called
   
 
   
-</p><table class="source_code">
+</p><div class="docstring">
+  <div class="discussion">
+    
+<p>Write the report to the provided IO object, STDOUT by default. Only
+@@max_lines lines of text are written, split equally between the beggining
+and end of the report, with an elipsis inserted in between.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-138
-139
-140
-141
-142</pre>
+168
+169
+170
+171
+172</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File '/Users/fischer/WorkProjects/daitss2/datyl/lib/datyl/reporter.rb', line 138</span>
+      <pre class="code"><span class="info file"># File '/Users/fischer/WorkProjects/daitss2/datyl/lib/datyl/reporter.rb', line 168</span>
 
 <span class='def def kw'>def</span> <span class='write identifier id'>write</span> <span class='io identifier id'>io</span> <span class='assign token'>=</span> <span class='STDOUT constant id'>STDOUT</span>
   <span class='each identifier id'>each</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='line identifier id'>line</span><span class='bitor op'>|</span>
@@ -1219,9 +1368,9 @@ point &#8216;done&#8217; was called
 </div>
     
     <div id="footer">
-  Generated on Fri Aug  5 19:11:54 2011 by 
+  Generated on Mon Nov 21 11:33:23 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.6.0 (ruby-1.8.7).
+  0.7.3 (ruby-1.8.7).
 </div>
 
   </body>
